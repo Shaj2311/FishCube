@@ -25,6 +25,7 @@ public:
 	Piece()
 	{
 		piece.setFillColor(color);
+		piece.setSize(PIECE_SIZE);   
 	}
 
 	inline void setColor(Color pieceColor)
@@ -47,10 +48,10 @@ public:
 
 
 	inline Color getColor() { return color; }
-	inline RectangleShape& getPiece() { return piece; }
+	inline RectangleShape& getRect() { return piece; }
 
 
 	void update();
-	void draw(RenderWindow& window);
+	void draw(RenderWindow& window, int positionX, int positionY);
 };
 
