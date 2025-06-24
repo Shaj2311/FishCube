@@ -1,6 +1,7 @@
 #include "Cube.h"
 
-void Cube::update()
+
+void Cube::update(double deltaTime)
 {
 	//update sides
 	for (int i = 0; i < 4; i++)
@@ -15,7 +16,7 @@ void Cube::update()
 			}
 
 
-			sides[i][j].update();
+			sides[i][j].update(deltaTime);
 
 
 
@@ -25,11 +26,10 @@ void Cube::update()
 
 void Cube::draw(RenderWindow& window)
 {
-	//draw current side
-	sides[1][1].draw(window);
+	getCurrentSide().draw(window); // Only draw the current face directly
 }
 
-void Cube::rotate(RenderWindow& window, int direction)
+void Cube::rotate(int direction)
 {
 	//update backend array
 	switch (direction)

@@ -78,14 +78,14 @@ void Side::rotate(int direction)
 	}
 }
 
-void Side::update()
+void Side::update(double deltaTime)
 {
 	//update pieces
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			pieces[i][j].update();
+			pieces[i][j].update(deltaTime);
 		}
 	}
 }
@@ -103,4 +103,11 @@ void Side::draw(RenderWindow& window)
 			);
 		}
 	}
+}
+
+void Side::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	for (int i = 0; i < 3; i++)
+		for (int j = 0; j < 3; j++)
+			target.draw(pieces[i][j].getRect(), states);
 }

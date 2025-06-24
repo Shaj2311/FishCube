@@ -25,6 +25,8 @@ public:
 	Piece()
 	{
 		piece.setFillColor(color);
+		//piece.setOutlineColor(Color::Black);
+		//piece.setOutlineThickness(10);
 		piece.setSize(PIECE_SIZE);   
 	}
 
@@ -49,9 +51,10 @@ public:
 
 	inline Color getColor() { return color; }
 	inline RectangleShape& getRect() { return piece; }
+	inline const RectangleShape& getRect() const { return piece; }
 
 
-	void update();
+	void update(double deltaTime);
 	void draw(RenderWindow& window, int positionX, int positionY);
 };
 

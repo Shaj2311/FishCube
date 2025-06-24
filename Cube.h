@@ -8,7 +8,6 @@ class Cube
 	//cube net
 	Side sides[4][3];
 
-
 	Color pieceColors[48];
 
 public:
@@ -136,8 +135,9 @@ public:
 	inline Side& getCurrentSide() { return sides[1][1]; }
 	
 
-	void update();
+	void update(double deltaTime);
 	void draw(RenderWindow& window);
-	void rotate(RenderWindow& window, int direction);
+	void rotate(int direction);
+
 };
 

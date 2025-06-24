@@ -1,7 +1,7 @@
 #pragma once
 #include "Piece.h"
 
-class Side
+class Side : public Drawable
 {
 	Piece pieces[3][3];
 
@@ -46,7 +46,8 @@ public:
 
 
 	void rotate(int direction);
-	void update();
+	void update(double deltaTime);
 	void draw(RenderWindow& window);
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
 
