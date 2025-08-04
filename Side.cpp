@@ -78,14 +78,14 @@ void Side::rotate(int direction)
 	}
 }
 
-void Side::update(double deltaTime)
+void Side::update()
 {
 	//update pieces
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			pieces[i][j].update(deltaTime);
+			pieces[i][j].update();
 		}
 	}
 }

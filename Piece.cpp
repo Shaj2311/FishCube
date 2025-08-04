@@ -9,7 +9,7 @@ const Color Piece::BLUE = Color::Blue;
 const Color Piece::WHITE = Color::White;
 const Color Piece::YELLOW = Color::Yellow;
 
-void Piece::update(double deltaTime)
+void Piece::update()
 {
 	//change colors
 	piece.setFillColor(color);

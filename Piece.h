@@ -54,7 +54,7 @@ public:
 	inline const RectangleShape& getRect() const { return piece; }
 
 
-	void update(double deltaTime);
+	void update();
 	void draw(RenderWindow& window, int positionX, int positionY);
 };
 

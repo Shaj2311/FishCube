@@ -1,40 +1,70 @@
 #include "Player.h"
+#include "Piece.h"
+#include <iostream>
 
-
-void Player::moveTo(Vector2f newPosition)
+void Player::move(Vector2f targetPos)
 {
-	targetPosition = newPosition;
-	isMoving = true;
+	static double progress = 0.f;
+	static Vector2f startingPos = fishSprite.getPosition();
+
+	
+	fishSprite.setPosition(
+		startingPos.x + (targetPos.x - startingPos.x) * progress,
+		startingPos.y + (targetPos.y - startingPos.y) * progress
+	);
+	progress += 1.f / 60;
+
+	if (progress >= 1.f)
+	{
+		//reset flag
+		isMoving = false;
+		//reset all static vars
+		startingPos = fishSprite.getPosition();
+		progress = 0.f;
+	}
 }
 
-void Player::update(double deltaTime)
-{
-	//bobbing
-	bobTime += deltaTime; 
-	float offsetY = std::sin(bobTime * bobSpeed) * bobAmplitude;
 
-	//moving
+
+Player::Player()
+{
+
+	fishTexture.loadFromFile("fish.png");
+	fishSprite.setTexture(fishTexture);
+
+
+	fishSprite.setOrigin(
+		fishTexture.getSize().x / 2,
+		fishTexture.getSize().y / 2
+	);
+
+	fishSprite.setScale(
+		(Piece::PIECE_SIZE.x * 0.65) / fishTexture.getSize().x,
+		(Piece::PIECE_SIZE.y * 0.65) / fishTexture.getSize().y
+	);
+
+	fishSprite.setPosition(1920 / 2, 1080 / 2);
+
+	fishSprite.setColor(Color::Red);
+
+	isMoving = false;
+
+	currentRow = currentCol = 1;
+}
+
+
+void Player::update()
+{
+	
+	//Movement
 	if (isMoving)
 	{
-		sf::Vector2f direction = targetPosition - currentPosition;
-		float distance = moveSpeed * deltaTime < std::hypot(direction.x, direction.y) ? moveSpeed * deltaTime : std::hypot(direction.x, direction.y);
-		sf::Vector2f step = (direction / std::hypot(direction.x, direction.y)) * distance;
-
-		currentPosition += step;
-
-		if (std::hypot(targetPosition.x - currentPosition.x, targetPosition.y - currentPosition.y) < 1.f)
-		{
-			currentPosition = targetPosition;
-			isMoving = false;
-		}
+		move(targetPos);
 	}
-
-	fishSprite.setPosition(currentPosition.x, currentPosition.y + offsetY);
-
+	std::cout << currentRow << "\t" << currentCol << "\n";
 }
 
-void Player::draw(RenderWindow& window)
+void Player::render(RenderWindow& window)
 {
 	window.draw(fishSprite);
 }
-

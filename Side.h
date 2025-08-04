@@ -46,7 +46,7 @@ public:
 
 
 	void rotate(int direction);
-	void update(double deltaTime);
+	void update();
 	void draw(RenderWindow& window);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
