@@ -10,8 +10,14 @@ class Cube
 
 	Color pieceColors[48];
 
+	unsigned int rotationDirection = NONE;
+	bool isMoving = false;
+
+	void rotateBackend();
+
 public:
-	
+
+	static const int NONE = 0;
 	static const int UP = 1;
 	static const int RIGHT = 2;
 	static const int DOWN = 3;
@@ -28,12 +34,17 @@ public:
 		if (
 			(indexJ == 0 || indexJ == 2) &&
 			(indexI != 1)
-		) exit(1);
+			) exit(1);
 
 
 		sides[indexI][indexJ] = side;
 	}
-
+	inline void setRotationDirection(unsigned int direction)
+	{
+		if (direction > 4) exit(1);
+		rotationDirection = direction;
+	}
+	inline void setIsMoving(bool moving) { isMoving = moving; }
 
 	inline Side& getSide(unsigned int indexI, unsigned int indexJ)
 	{
@@ -53,7 +64,7 @@ public:
 
 	void update();
 	void draw(RenderWindow& window);
-	void rotate(int direction);
+	void rotate();
 
 
 };
