@@ -2,111 +2,6 @@
 #include <iostream>
 
 
-void Cube::rotateBackend()
-{
-	//update backend array
-	switch (rotationDirection)
-	{
-	case UP:
-	{
-		//move sides up
-		Side temp = sides[0][1];
-		for (int i = 0; i < 3; i++)
-		{
-			sides[i][1] = sides[i + 1][1];
-		}
-		sides[3][1] = temp;
-
-
-		//rotate left side counter-clockwise
-		sides[1][0].rotate(Side::COUNTER_CLOCKWISE);
-
-		//rotate right side clockwise
-		sides[1][2].rotate(Side::CLOCKWISE);
-
-		break;
-	}
-	case RIGHT:
-	{
-		////cycle pieces
-		//Side temp = sides[3][1];
-		//sides[3][1] = sides[1][0];
-		//for (int i = 0; i < 2; i++)
-		//{
-		//	sides[1][i] = sides[1][i + 1];
-		//}
-		//sides[1][2] = temp;
-		Side temp = sides[1][2];
-		sides[1][2] = sides[1][1];
-		sides[1][1] = sides[1][0];
-		sides[3][1].rotate(Side::CLOCKWISE);//rotate back side before moving
-		sides[3][1].rotate(Side::CLOCKWISE);
-		sides[1][0] = sides[3][1];
-		temp.rotate(Side::CLOCKWISE);//rotate temp side before assigning to back side
-		temp.rotate(Side::CLOCKWISE);
-		sides[3][1] = temp;
-
-		//rotate top side counter-clockwise
-		sides[0][1].rotate(Side::COUNTER_CLOCKWISE);
-
-		//rotate bottom side clockwise
-		sides[2][1].rotate(Side::CLOCKWISE);
-
-
-		break;
-	}
-	case DOWN:
-	{
-		//move sides down
-		Side temp = sides[3][1];
-		for (int i = 3; i > 0; i--)
-		{
-			sides[i][1] = sides[i - 1][1];
-		}
-		sides[0][1] = temp;
-
-		//rotate left side clockwise
-		sides[1][0].rotate(Side::CLOCKWISE);
-
-		//rotate right side counter-clockwise
-		sides[1][2].rotate(Side::COUNTER_CLOCKWISE);
-
-		break;
-	}
-	case LEFT:
-	{
-		////cycle pieces
-		//Side temp = sides[3][1];
-		//sides[3][1] = sides[1][2];
-		//for (int i = 2; i > 0; i--)
-		//{
-		//	sides[1][i] = sides[1][i - 1];
-		//}
-		//sides[1][0] = temp;
-		Side temp = sides[1][0];
-		sides[1][0] = sides[1][1];
-		sides[1][1] = sides[1][2];
-		sides[3][1].rotate(Side::CLOCKWISE);//rotate back side before moving
-		sides[3][1].rotate(Side::CLOCKWISE);
-		sides[1][2] = sides[3][1];
-		temp.rotate(Side::CLOCKWISE); //rotate temp side before assigning to back side
-		temp.rotate(Side::CLOCKWISE);
-		sides[3][1] = temp;
-
-		//rotate top side clockwise
-		sides[0][1].rotate(Side::CLOCKWISE);
-
-		//rotate bottom side counter-clockwise
-		sides[2][1].rotate(Side::COUNTER_CLOCKWISE);
-
-		break;
-	}
-	default:
-		break;
-	}
-
-}
-
 Cube::Cube()
 {
 	srand(time(0));
@@ -214,11 +109,6 @@ void Cube::update()
 
 		}
 	}
-
-	if (isMoving)
-	{
-		rotate();
-	}
 }
 
 void Cube::draw(RenderWindow& window)
@@ -226,26 +116,108 @@ void Cube::draw(RenderWindow& window)
 	getCurrentSide().draw(window); // Only draw the current face directly
 }
 
-void Cube::rotate()
+void Cube::rotate(int direction)
 {
-	//frontend rotation
-	isMoving = true;
-	static double progress = 0.f;
-
-	//offset
-	std::cout << progress << "\n";
-	progress += 1.f / 60;
-
-
-
-	if (progress >= 1.f)
+	//update backend array
+	switch (direction)
 	{
-		isMoving = false;
-		progress = 0.f;
+	case UP:
+	{
+		//move sides up
+		Side temp = sides[0][1];
+		for (int i = 0; i < 3; i++)
+		{
+			sides[i][1] = sides[i + 1][1];
+		}
+		sides[3][1] = temp;
+
+
+		//rotate left side counter-clockwise
+		sides[1][0].rotate(Side::COUNTER_CLOCKWISE);
+
+		//rotate right side clockwise
+		sides[1][2].rotate(Side::CLOCKWISE);
+
+		break;
+	}
+	case RIGHT:
+	{
+		////cycle pieces
+		//Side temp = sides[3][1];
+		//sides[3][1] = sides[1][0];
+		//for (int i = 0; i < 2; i++)
+		//{
+		//	sides[1][i] = sides[1][i + 1];
+		//}
+		//sides[1][2] = temp;
+		Side temp = sides[1][2];
+		sides[1][2] = sides[1][1];
+		sides[1][1] = sides[1][0];
+		sides[3][1].rotate(Side::CLOCKWISE);//rotate back side before moving
+		sides[3][1].rotate(Side::CLOCKWISE);
+		sides[1][0] = sides[3][1];
+		temp.rotate(Side::CLOCKWISE);//rotate temp side before assigning to back side
+		temp.rotate(Side::CLOCKWISE);
+		sides[3][1] = temp;
+
+		//rotate top side counter-clockwise
+		sides[0][1].rotate(Side::COUNTER_CLOCKWISE);
+
+		//rotate bottom side clockwise
+		sides[2][1].rotate(Side::CLOCKWISE);
+
+
+		break;
+	}
+	case DOWN:
+	{
+		//move sides down
+		Side temp = sides[3][1];
+		for (int i = 3; i > 0; i--)
+		{
+			sides[i][1] = sides[i - 1][1];
+		}
+		sides[0][1] = temp;
+
+		//rotate left side clockwise
+		sides[1][0].rotate(Side::CLOCKWISE);
+
+		//rotate right side counter-clockwise
+		sides[1][2].rotate(Side::COUNTER_CLOCKWISE);
+
+		break;
+	}
+	case LEFT:
+	{
+		////cycle pieces
+		//Side temp = sides[3][1];
+		//sides[3][1] = sides[1][2];
+		//for (int i = 2; i > 0; i--)
+		//{
+		//	sides[1][i] = sides[1][i - 1];
+		//}
+		//sides[1][0] = temp;
+		Side temp = sides[1][0];
+		sides[1][0] = sides[1][1];
+		sides[1][1] = sides[1][2];
+		sides[3][1].rotate(Side::CLOCKWISE);//rotate back side before moving
+		sides[3][1].rotate(Side::CLOCKWISE);
+		sides[1][2] = sides[3][1];
+		temp.rotate(Side::CLOCKWISE); //rotate temp side before assigning to back side
+		temp.rotate(Side::CLOCKWISE);
+		sides[3][1] = temp;
+
+		//rotate top side clockwise
+		sides[0][1].rotate(Side::CLOCKWISE);
+
+		//rotate bottom side counter-clockwise
+		sides[2][1].rotate(Side::COUNTER_CLOCKWISE);
+
+		break;
+	}
+	default:
+		break;
 	}
 
-
-	//backend rotation
-	if (!progress) //if this condition is removed, the backend array would be rotated 60 times (once every frame) instead of once
-		rotateBackend();
 }
+
