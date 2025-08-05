@@ -61,7 +61,7 @@ void Player::update()
 	{
 		move(targetPos);
 	}
-	std::cout << currentRow << "\t" << currentCol << "\n";
+	//std::cout << currentRow << "\t" << currentCol << "\n";
 }
 
 void Player::render(RenderWindow& window)

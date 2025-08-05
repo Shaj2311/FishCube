@@ -1,5 +1,5 @@
 #include "Cube.h"
-#include <thread>
+#include <iostream>
 
 
 Cube::Cube()
@@ -142,14 +142,31 @@ void Cube::rotate(int direction)
 	}
 	case RIGHT:
 	{
-		//cycle pieces
-		Side temp = sides[3][1];
-		sides[3][1] = sides[1][0];
-		for (int i = 0; i < 2; i++)
-		{
-			sides[1][i] = sides[1][i + 1];
-		}
-		sides[1][2] = temp;
+		////cycle pieces
+		//Side temp = sides[3][1];
+		//sides[3][1] = sides[1][0];
+		//for (int i = 0; i < 2; i++)
+		//{
+		//	sides[1][i] = sides[1][i + 1];
+		//}
+		//sides[1][2] = temp;
+		Side temp = sides[1][2];
+		sides[1][2] = sides[1][1];
+		sides[1][1] = sides[1][0];
+		sides[3][1].rotate(Side::CLOCKWISE);//rotate back side before moving
+		sides[3][1].rotate(Side::CLOCKWISE);
+		sides[1][0] = sides[3][1];
+		temp.rotate(Side::CLOCKWISE);//rotate temp side before assigning to back side
+		temp.rotate(Side::CLOCKWISE);
+		sides[3][1] = temp;
+
+		//rotate top side counter-clockwise
+		sides[0][1].rotate(Side::COUNTER_CLOCKWISE);
+
+		//rotate bottom side clockwise
+		sides[2][1].rotate(Side::CLOCKWISE);
+
+
 		break;
 	}
 	case DOWN:
@@ -172,14 +189,30 @@ void Cube::rotate(int direction)
 	}
 	case LEFT:
 	{
-		//cycle pieces
-		Side temp = sides[3][1];
-		sides[3][1] = sides[1][2];
-		for (int i = 2; i > 0; i--)
-		{
-			sides[1][i] = sides[1][i - 1];
-		}
-		sides[1][0] = temp;
+		////cycle pieces
+		//Side temp = sides[3][1];
+		//sides[3][1] = sides[1][2];
+		//for (int i = 2; i > 0; i--)
+		//{
+		//	sides[1][i] = sides[1][i - 1];
+		//}
+		//sides[1][0] = temp;
+		Side temp = sides[1][0];
+		sides[1][0] = sides[1][1];
+		sides[1][1] = sides[1][2];
+		sides[3][1].rotate(Side::CLOCKWISE);//rotate back side before moving
+		sides[3][1].rotate(Side::CLOCKWISE);
+		sides[1][2] = sides[3][1];
+		temp.rotate(Side::CLOCKWISE); //rotate temp side before assigning to back side
+		temp.rotate(Side::CLOCKWISE);
+		sides[3][1] = temp;
+
+		//rotate top side clockwise
+		sides[0][1].rotate(Side::CLOCKWISE);
+
+		//rotate bottom side counter-clockwise
+		sides[2][1].rotate(Side::COUNTER_CLOCKWISE);
+
 		break;
 	}
 	default:

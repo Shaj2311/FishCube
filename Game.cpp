@@ -23,6 +23,7 @@ void Game::pollEvents()
                                 window->close();
                                 break;
 
+                        case Keyboard::D:
                         case Keyboard::Right:
                                 if (player.getIsMoving()) break; //do not accept input if player is already moving
                                 player.setIsMoving(true);
@@ -47,7 +48,7 @@ void Game::pollEvents()
                                 else
                                 {
                                         //do not move if next piece has same color
-                                        if (cube.getSide(1,2).getPiece(player.getRow(), player.getCol() - 2).getColor() == player.getColor()) break; 
+                                        if (cube.getSide(1,2).getPiece(player.getRow(), 0).getColor() == player.getColor()) break; 
 
                                         //move 2 steps left
                                         player.setTargetPos(Vector2f(
@@ -55,13 +56,14 @@ void Game::pollEvents()
                                                 player.getCurrentPos().y
                                         ));
 
-                                        //rotate cube right
-                                        cube.rotate(Cube::RIGHT);
+                                        //rotate cube left
+                                        cube.rotate(Cube::LEFT);
 
                                         player.decrementCol(); player.decrementCol();
                                 }
                                 break;
 
+                        case Keyboard::A:
                         case Keyboard::Left:
                                 if (player.getIsMoving()) break; //do not accept input if player is already moving
                                 player.setIsMoving(true);
@@ -85,7 +87,7 @@ void Game::pollEvents()
                                 else
                                 {
                                         //do not move if next piece has same color
-                                        if (cube.getSide(1,0).getPiece(player.getRow(), player.getCol() + 2).getColor() == player.getColor()) break; 
+                                        if (cube.getSide(1,0).getPiece(player.getRow(), 2).getColor() == player.getColor()) break; 
 
                                         //move 2 steps right
                                         player.setTargetPos(Vector2f(
@@ -93,13 +95,14 @@ void Game::pollEvents()
                                                 player.getCurrentPos().y
                                         ));
 
-                                        //rotate cube left
-                                        cube.rotate(Cube::LEFT);
+                                        //rotate cube right
+                                        cube.rotate(Cube::RIGHT);
 
                                         player.incrementCol(); player.incrementCol();
                                 }
                                 break;
 
+                        case Keyboard::W:
                         case Keyboard::Up:
                                 if (player.getIsMoving()) break; //do not accept input if player is already moving
                                 player.setIsMoving(true);
@@ -125,7 +128,7 @@ void Game::pollEvents()
                                 {
 
                                         //do not move if next piece has same color
-                                        if (cube.getSide(0,1).getPiece(player.getRow() + 2, player.getCol()).getColor() == player.getColor()) break; //do not move if same color
+                                        if (cube.getSide(0,1).getPiece(2, player.getCol()).getColor() == player.getColor()) break; //do not move if same color
 
                                         //move 2 steps down
                                         player.setTargetPos(Vector2f(
@@ -133,13 +136,14 @@ void Game::pollEvents()
                                                 player.getCurrentPos().y + (2 * Piece::PIECE_SIZE.y)
                                         ));
 
-                                        //rotate cube up
-                                        cube.rotate(Cube::UP);
+                                        //rotate cube down
+                                        cube.rotate(Cube::DOWN);
 
                                         player.incrementRow(); player.incrementRow();
                                 }
                                 break;
 
+                        case Keyboard::S:
                         case Keyboard::Down:
                                 if (player.getIsMoving()) break; //do not accept input if player is already moving
                                 player.setIsMoving(true);
@@ -164,7 +168,7 @@ void Game::pollEvents()
                                 else
                                 {
                                         //do not move if next piece has same color
-                                        if (cube.getSide(2,1).getPiece(player.getRow() - 2, player.getCol()).getColor() == player.getColor()) break; //do not move if same color
+                                        if (cube.getSide(2,1).getPiece(0, player.getCol()).getColor() == player.getColor()) break; //do not move if same color
 
                                         //move 2 steps up
                                         player.setTargetPos(Vector2f(
@@ -172,8 +176,8 @@ void Game::pollEvents()
                                                 player.getCurrentPos().y - (2 * Piece::PIECE_SIZE.y)
                                         ));
 
-                                        //rotate cube down
-                                        cube.rotate(Cube::DOWN);
+                                        //rotate cube up
+                                        cube.rotate(Cube::UP);
 
                                         player.decrementRow(); player.decrementRow();
                                 }
