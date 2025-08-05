@@ -62,6 +62,13 @@ void Game::pollEvents()
                                 player.setIsMoving(true);
                                 if (player.getCol() > 0)
                                 {
+
+                                        if (cube.getCurrentSide().getPiece(player.getRow(), player.getCol() - 1).getColor() == player.getColor()) //do not move if same color
+                                        {
+                                                player.setIsMoving(false);
+                                                break;
+                                        }
+
                                         //move one step left
                                         player.setTargetPos(Vector2f(
                                                 player.getCurrentPos().x - Piece::PIECE_SIZE.x,
@@ -72,6 +79,9 @@ void Game::pollEvents()
                                 }
                                 else
                                 {
+
+                                        if (cube.getCurrentSide().getPiece(player.getRow(), player.getCol() + 2).getColor() == player.getColor()) break; //do not move if same color
+
                                         //move 2 steps right
                                         player.setTargetPos(Vector2f(
                                                 player.getCurrentPos().x + (2 * Piece::PIECE_SIZE.x),
@@ -87,6 +97,13 @@ void Game::pollEvents()
                                 player.setIsMoving(true);
                                 if (player.getRow() > 0)
                                 {
+
+                                        if (cube.getCurrentSide().getPiece(player.getRow() - 1, player.getCol()).getColor() == player.getColor())//do not move if same color
+                                        {
+                                                player.setIsMoving(false);
+                                                break;
+                                        }
+
                                         //move one step up
                                         player.setTargetPos(Vector2f(
                                                 player.getCurrentPos().x ,
@@ -97,6 +114,9 @@ void Game::pollEvents()
                                 }
                                 else
                                 {
+
+                                        if (cube.getCurrentSide().getPiece(player.getRow() + 2, player.getCol()).getColor() == player.getColor()) break; //do not move if same color
+
                                         //move 2 steps down
                                         player.setTargetPos(Vector2f(
                                                 player.getCurrentPos().x ,
