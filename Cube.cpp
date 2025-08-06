@@ -227,14 +227,27 @@ void Cube::draw(RenderWindow& window)
 
 void Cube::rotate(int direction)
 {
+	static double progress = 0.f;
 	Side oldSide = sides[1][1];
 
+	if (!progress) //rotate backend ONLY ONCE
+	{
 	rotateBackend(direction);
+	}
 
 	Side newSide = sides[1][1];
 
 	oldSide.squish();
 	newSide.expand();
+
+	progress += 1.f / 60;
+
+	if (progress >= 1.f)
+	{
+		isMoving = false;
+		progress = 0.f;
+	}
+
 
 }
 
