@@ -56,5 +56,8 @@ public:
 
 	void update();
 	void draw(RenderWindow& window, int positionX, int positionY);
+	void move();
+	void squish();
+	void expand();
 };
 

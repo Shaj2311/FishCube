@@ -61,7 +61,9 @@ void Game::pollEvents()
                                         ));
 
                                         //rotate cube left
-                                        cube.rotate(Cube::LEFT);
+                                        cube.setRotationDirection(Cube::LEFT);
+                                        cube.setIsMoving(true);
+
 
                                         player.decrementCol(); player.decrementCol();
                                 }
@@ -104,7 +106,8 @@ void Game::pollEvents()
                                         ));
 
                                         //rotate cube right
-                                        cube.rotate(Cube::RIGHT);
+                                        cube.setRotationDirection(Cube::RIGHT);
+                                        cube.setIsMoving(true);
 
                                         player.incrementCol(); player.incrementCol();
                                 }
@@ -149,7 +152,9 @@ void Game::pollEvents()
                                         ));
 
                                         //rotate cube down
-                                        cube.rotate(Cube::DOWN);
+                                        cube.setRotationDirection(Cube::DOWN);
+                                        cube.setIsMoving(true);
+
 
                                         player.incrementRow(); player.incrementRow();
                                 }
@@ -193,7 +198,9 @@ void Game::pollEvents()
                                         ));
 
                                         //rotate cube up
-                                        cube.rotate(Cube::UP);
+                                        cube.setRotationDirection(Cube::UP);
+                                        cube.setIsMoving(true);
+
 
                                         player.decrementRow(); player.decrementRow();
                                 }

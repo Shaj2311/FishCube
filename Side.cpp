@@ -111,3 +111,27 @@ void Side::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		for (int j = 0; j < 3; j++)
 			target.draw(pieces[i][j].getRect(), states);
 }
+
+void Side::squish()
+{
+	for (int i = 0; i < 3; i++)
+	{
+		for(int j = 0; j < 3; j++)
+		{
+			pieces[i][j].move();
+			pieces[i][j].squish();
+		}
+	}
+}
+
+void Side::expand()
+{
+	for (int i = 0; i < 3; i++)
+	{
+		for(int j = 0; j < 3; j++)
+		{
+			pieces[i][j].move();
+			pieces[i][j].expand();
+		}
+	}
+}

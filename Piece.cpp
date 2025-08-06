@@ -21,3 +21,33 @@ void Piece::draw(RenderWindow& window, int positionX, int positionY)
 	window.draw(piece);
 }
 
+void Piece::move()
+{
+	static double progress = 0.f;
+
+	if (progress >= 1.f)
+	{
+		progress = 0.f;
+	}
+}
+
+void Piece::squish()
+{
+	static double progress = 0.f;
+
+	if (progress >= 1.f)
+	{
+		progress = 0.f;
+	}
+}
+
+void Piece::expand()
+{
+	static double progress = 0.f;
+
+	if (progress >= 1.f)
+	{
+		progress = 0.f;
+	}
+}
+

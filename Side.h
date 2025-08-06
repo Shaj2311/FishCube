@@ -49,5 +49,8 @@ public:
 	void update();
 	void draw(RenderWindow& window);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+	
+	void squish();
+	void expand();
 };
 
