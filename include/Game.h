@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include "Side.h"
+#include "State.h"
 class Game
 {
 	RenderWindow window;
@@ -8,9 +9,9 @@ class Game
 	Side s;
 public:
 	Game();
-	void pollEvents();
-	void update();
-	void draw();
+	void pollEvents(StateManager& sm);
+	void update(StateManager& sm);
+	void draw(StateManager& sm);
 	
 	RenderWindow& getWindow(){return window;}
 };

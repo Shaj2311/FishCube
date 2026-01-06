@@ -1,14 +1,17 @@
 #include <SFML/Graphics.hpp>
 #include "Game.h"
+#include "State.h"
 
 int main()
 {
-	Game game;
+	StateManager sm;
+	sm.switchToState(IDLE_UNSOLVED);
 
+	Game game;
 
 	while (game.getWindow().isOpen())
 	{
-		game.update();
-		game.draw();
+		game.update(sm);
+		game.draw(sm);
 	}
 }

@@ -28,25 +28,174 @@ Side::Side()
 
 }
 
-void Side::update()
+void Side::update(StateManager& sm)
 {
-	//update colors
-	for(int i = 0; i < 3; i++)
+	GameState currState = sm.getState();
+	switch(currState)
 	{
-		for(int j = 0; j < 3; j++)
-		{
-			pieces[i][j].setFillColor(pieceColors[i][j]);
-		}
+		case START:
+			{
+				break;
+			}
+		case GAME_START:
+			{
+				break;
+			}
+		case IDLE_UNSOLVED:
+			{
+				//update colors
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						pieces[i][j].setFillColor(pieceColors[i][j]);
+					}
+				}
+				break;
+			}
+		case IDLE_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_UNSOLVED:
+			{
+				//update colors
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						pieces[i][j].setFillColor(pieceColors[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case IDLE_SOLVED:
+			{
+				//update colors
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						pieces[i][j].setFillColor(pieceColors[i][j]);
+					}
+				}
+				break;
+			}
+		case IDLE_SOLVED_PAUSE:
+			{
+				break;
+			}
+		case MOVING_SOLVED:
+			{
+				//update colors
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						pieces[i][j].setFillColor(pieceColors[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_SOLVED_PAUSE:
+			{
+				break;
+			}
+		case WIN:
+			{
+				break;
+			}
+		case EXIT:
+			{
+				break;
+			}
 	}
 }
-void Side::draw(RenderWindow& window)
+void Side::draw(RenderWindow& window, StateManager& sm)
 {
-	for(int i = 0; i < 3; i++)
+	GameState currState = sm.getState();
+	switch(currState)
 	{
-		for(int j = 0; j < 3; j++)
-		{
-			window.draw(pieces[i][j]);
-		}
+		case START:
+			{
+				break;
+			}
+		case GAME_START:
+			{
+				break;
+			}
+		case IDLE_UNSOLVED:
+			{
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						window.draw(pieces[i][j]);
+					}
+				}
+				break;
+			}
+		case IDLE_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_UNSOLVED:
+			{
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						window.draw(pieces[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case IDLE_SOLVED:
+			{
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						window.draw(pieces[i][j]);
+					}
+				}
+				break;
+			}
+		case IDLE_SOLVED_PAUSE:
+			{
+				break;
+			}
+		case MOVING_SOLVED:
+			{
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						window.draw(pieces[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_SOLVED_PAUSE:
+			{
+				break;
+			}
+		case WIN:
+			{
+				break;
+			}
+		case EXIT:
+			{
+				break;
+			}
 	}
 }
 

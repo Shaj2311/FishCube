@@ -1,6 +1,7 @@
 #ifndef SIDE_H
 #define SIDE_H
 #include <SFML/Graphics.hpp>
+#include "State.h"
 #include "constants.h"
 using namespace sf;
 class Side
@@ -11,8 +12,8 @@ class Side
 
 public:
 	Side();
-	void update();
-	void draw(RenderWindow& window);
+	void update(StateManager& sm);
+	void draw(RenderWindow& window, StateManager& sm);
 
 	void setPosition(double x, double y);
 };
