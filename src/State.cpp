@@ -55,6 +55,38 @@ void StateManager::switchToState(GameState newState)
 			{
 				break;
 			}
+		case MOVING_UP_1_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_UP_1_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_UP_2_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_UP_2_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_DOWN_1_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_DOWN_1_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_DOWN_2_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_DOWN_2_UNSOLVED_PAUSED:
+			{
+				break;
+			}
 		case IDLE_SOLVED:
 			{
 				break;
@@ -92,6 +124,38 @@ void StateManager::switchToState(GameState newState)
 				break;
 			}
 		case MOVING_LEFT_2_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_UP_1_SOLVED:
+			{
+				break;
+			}
+		case MOVING_UP_1_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_UP_2_SOLVED:
+			{
+				break;
+			}
+		case MOVING_UP_2_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_DOWN_1_SOLVED:
+			{
+				break;
+			}
+		case MOVING_DOWN_1_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_DOWN_2_SOLVED:
+			{
+				break;
+			}
+		case MOVING_DOWN_2_SOLVED_PAUSED:
 			{
 				break;
 			}

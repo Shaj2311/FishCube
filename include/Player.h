@@ -12,6 +12,8 @@ class Player
 	unsigned int currentRow;
 	unsigned int currentCol;
 
+	double moveProgress = 0.f;
+
 	void move(Vector2f targetPos);
 public:
 	Player();
