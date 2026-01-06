@@ -13,6 +13,7 @@ add_executable(FishCube
 	src/Game.cpp
 	src/Side.cpp
 	src/State.cpp
+	src/Player.cpp
 )
 
 target_include_directories(FishCube PRIVATE ${CMAKE_SOURCE_DIR}/include)

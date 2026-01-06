@@ -18,6 +18,9 @@ void Game::update(GameState& currState, GameState& nextState)
 			{
 				//reset side
 				s = new Side();
+				//reset player
+				p = new Player();
+
 				//start game
 				nextState = IDLE_UNSOLVED;
 				break;
@@ -114,12 +117,14 @@ void Game::update(GameState& currState, GameState& nextState)
 	pollEvents(currState, nextState);
 
 	s->update(currState, nextState);
+	p->update(currState, nextState);
 }
 
 void Game::draw(GameState& currState, GameState& nextState)
 {
 	window.clear();
 	s->draw(window, currState, nextState);
+	p->draw(window, currState, nextState);
 	window.display();
 }
 

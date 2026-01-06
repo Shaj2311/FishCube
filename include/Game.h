@@ -2,11 +2,13 @@
 #define GAME_H
 #include "Side.h"
 #include "State.h"
+#include "Player.h"
 class Game
 {
 	RenderWindow window;
 	//only one side for now
 	Side* s;
+	Player* p;
 public:
 	Game();
 	~Game(){delete s;}

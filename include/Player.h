@@ -2,11 +2,12 @@
 #define PLAYER_H
 #include <SFML/Graphics.hpp>
 #include "State.h"
+#include "constants.h"
 using namespace sf;
 class Player
 {
 	Texture fishTexture;
-	Sprite fishSprite;
+	Sprite* fishSprite;
 
 	unsigned int currentRow;
 	unsigned int currentCol;
