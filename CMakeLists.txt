@@ -8,7 +8,13 @@ set(SFML_DIR "C:/Users/Haider Ali/source/SFML-3.0.2/lib/cmake/SFML")
 
 find_package(SFML 3.0.2 REQUIRED COMPONENTS Graphics Window System)
 
-add_executable(FishCube src/main.cpp)
+add_executable(FishCube 
+	src/main.cpp
+	src/Game.cpp
+	src/Side.cpp
+)
+
+target_include_directories(FishCube PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
 target_link_libraries(FishCube PRIVATE
 	SFML::Graphics
