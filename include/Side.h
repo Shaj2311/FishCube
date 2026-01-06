@@ -12,8 +12,8 @@ class Side
 
 public:
 	Side();
-	void update(StateManager& sm);
-	void draw(RenderWindow& window, StateManager& sm);
+	void update(GameState& currState, GameState& nextState);
+	void draw(RenderWindow& window, GameState& currState, GameState& nextState);
 
 	void setPosition(double x, double y);
 };

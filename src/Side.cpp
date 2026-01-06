@@ -28,9 +28,8 @@ Side::Side()
 
 }
 
-void Side::update(StateManager& sm)
+void Side::update(GameState& currState, GameState& nextState)
 {
-	GameState currState = sm.getState();
 	switch(currState)
 	{
 		case START:
@@ -115,9 +114,8 @@ void Side::update(StateManager& sm)
 			}
 	}
 }
-void Side::draw(RenderWindow& window, StateManager& sm)
+void Side::draw(RenderWindow& window, GameState& currState, GameState& nextState)
 {
-	GameState currState = sm.getState();
 	switch(currState)
 	{
 		case START:

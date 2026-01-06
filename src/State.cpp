@@ -5,7 +5,7 @@ void StateManager::switchToState(GameState newState)
 	//switch state
 	gameState = newState;
 
-	switch(newState)
+	switch(gameState)
 	{
 		case START:
 			{

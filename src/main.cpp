@@ -5,13 +5,18 @@
 int main()
 {
 	StateManager sm;
-	sm.switchToState(IDLE_UNSOLVED);
+	sm.switchToState(START);
 
 	Game game;
 
 	while (game.getWindow().isOpen())
 	{
-		game.update(sm);
-		game.draw(sm);
+		GameState currState = sm.getState();
+		GameState nextState = currState;
+
+		game.update(currState, nextState);
+		game.draw(currState, nextState);
+
+		sm.switchToState(nextState);
 	}
 }
