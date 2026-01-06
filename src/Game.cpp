@@ -30,11 +30,35 @@ void Game::update(GameState& currState, GameState& nextState)
 			{
 				break;
 			}
-		case MOVING_UNSOLVED:
+		case MOVING_RIGHT_1_UNSOLVED:
 			{
 				break;
 			}
-		case MOVING_UNSOLVED_PAUSED:
+		case MOVING_RIGHT_1_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_UNSOLVED_PAUSED:
 			{
 				break;
 			}
@@ -42,15 +66,39 @@ void Game::update(GameState& currState, GameState& nextState)
 			{
 				break;
 			}
-		case IDLE_SOLVED_PAUSE:
+		case IDLE_SOLVED_PAUSED:
 			{
 				break;
 			}
-		case MOVING_SOLVED:
+		case MOVING_RIGHT_1_SOLVED:
 			{
 				break;
 			}
-		case MOVING_SOLVED_PAUSE:
+		case MOVING_RIGHT_1_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_SOLVED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_SOLVED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_SOLVED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_SOLVED_PAUSED:
 			{
 				break;
 			}
@@ -83,7 +131,6 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 		if (event->is<sf::Event::Closed>())
 			window.close();
 
-
 		switch(currState)
 		{
 			case START:
@@ -110,11 +157,35 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 				{
 					break;
 				}
-			case MOVING_UNSOLVED:
+			case MOVING_RIGHT_1_UNSOLVED:
 				{
 					break;
 				}
-			case MOVING_UNSOLVED_PAUSED:
+			case MOVING_RIGHT_1_UNSOLVED_PAUSED:
+				{
+					break;
+				}
+			case MOVING_RIGHT_2_UNSOLVED:
+				{
+					break;
+				}
+			case MOVING_RIGHT_2_UNSOLVED_PAUSED:
+				{
+					break;
+				}
+			case MOVING_LEFT_1_UNSOLVED:
+				{
+					break;
+				}
+			case MOVING_LEFT_1_UNSOLVED_PAUSED:
+				{
+					break;
+				}
+			case MOVING_LEFT_2_UNSOLVED:
+				{
+					break;
+				}
+			case MOVING_LEFT_2_UNSOLVED_PAUSED:
 				{
 					break;
 				}
@@ -122,15 +193,39 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 				{
 					break;
 				}
-			case IDLE_SOLVED_PAUSE:
+			case IDLE_SOLVED_PAUSED:
 				{
 					break;
 				}
-			case MOVING_SOLVED:
+			case MOVING_RIGHT_1_SOLVED:
 				{
 					break;
 				}
-			case MOVING_SOLVED_PAUSE:
+			case MOVING_RIGHT_1_SOLVED_PAUSED:
+				{
+					break;
+				}
+			case MOVING_RIGHT_2_SOLVED:
+				{
+					break;
+				}
+			case MOVING_RIGHT_2_SOLVED_PAUSED:
+				{
+					break;
+				}
+			case MOVING_LEFT_1_SOLVED:
+				{
+					break;
+				}
+			case MOVING_LEFT_1_SOLVED_PAUSED:
+				{
+					break;
+				}
+			case MOVING_LEFT_2_SOLVED:
+				{
+					break;
+				}
+			case MOVING_LEFT_2_SOLVED_PAUSED:
 				{
 					break;
 				}

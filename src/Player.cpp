@@ -20,12 +20,35 @@ void Player::update(GameState& currState, GameState& nextState)
 			{
 				break;
 			}
-		case MOVING_UNSOLVED:
+		case MOVING_RIGHT_1_UNSOLVED:
 			{
-				//update colors
 				break;
 			}
-		case MOVING_UNSOLVED_PAUSED:
+		case MOVING_RIGHT_1_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_UNSOLVED_PAUSED:
 			{
 				break;
 			}
@@ -33,15 +56,39 @@ void Player::update(GameState& currState, GameState& nextState)
 			{
 				break;
 			}
-		case IDLE_SOLVED_PAUSE:
+		case IDLE_SOLVED_PAUSED:
 			{
 				break;
 			}
-		case MOVING_SOLVED:
+		case MOVING_RIGHT_1_SOLVED:
 			{
 				break;
 			}
-		case MOVING_SOLVED_PAUSE:
+		case MOVING_RIGHT_1_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_SOLVED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_SOLVED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_SOLVED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_SOLVED_PAUSED:
 			{
 				break;
 			}
@@ -76,12 +123,35 @@ void Player::draw(RenderWindow& window, GameState& currState, GameState& nextSta
 			{
 				break;
 			}
-		case MOVING_UNSOLVED:
+		case MOVING_RIGHT_1_UNSOLVED:
 			{
-				//update colors
 				break;
 			}
-		case MOVING_UNSOLVED_PAUSED:
+		case MOVING_RIGHT_1_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_UNSOLVED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_UNSOLVED_PAUSED:
 			{
 				break;
 			}
@@ -89,15 +159,39 @@ void Player::draw(RenderWindow& window, GameState& currState, GameState& nextSta
 			{
 				break;
 			}
-		case IDLE_SOLVED_PAUSE:
+		case IDLE_SOLVED_PAUSED:
 			{
 				break;
 			}
-		case MOVING_SOLVED:
+		case MOVING_RIGHT_1_SOLVED:
 			{
 				break;
 			}
-		case MOVING_SOLVED_PAUSE:
+		case MOVING_RIGHT_1_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_SOLVED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_SOLVED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_SOLVED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_SOLVED_PAUSED:
 			{
 				break;
 			}

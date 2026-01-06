@@ -56,7 +56,7 @@ void Side::update(GameState& currState, GameState& nextState)
 			{
 				break;
 			}
-		case MOVING_UNSOLVED:
+		case MOVING_RIGHT_1_UNSOLVED:
 			{
 				//update colors
 				for(int i = 0; i < 3; i++)
@@ -68,7 +68,55 @@ void Side::update(GameState& currState, GameState& nextState)
 				}
 				break;
 			}
-		case MOVING_UNSOLVED_PAUSED:
+		case MOVING_RIGHT_1_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_UNSOLVED:
+			{
+				//update colors
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						pieces[i][j].setFillColor(pieceColors[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_RIGHT_2_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_UNSOLVED:
+			{
+				//update colors
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						pieces[i][j].setFillColor(pieceColors[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_LEFT_1_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_UNSOLVED:
+			{
+				//update colors
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						pieces[i][j].setFillColor(pieceColors[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_LEFT_2_UNSOLVED_PAUSED:
 			{
 				break;
 			}
@@ -84,11 +132,11 @@ void Side::update(GameState& currState, GameState& nextState)
 				}
 				break;
 			}
-		case IDLE_SOLVED_PAUSE:
+		case IDLE_SOLVED_PAUSED:
 			{
 				break;
 			}
-		case MOVING_SOLVED:
+		case MOVING_RIGHT_1_SOLVED:
 			{
 				//update colors
 				for(int i = 0; i < 3; i++)
@@ -100,7 +148,55 @@ void Side::update(GameState& currState, GameState& nextState)
 				}
 				break;
 			}
-		case MOVING_SOLVED_PAUSE:
+		case MOVING_RIGHT_1_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_SOLVED:
+			{
+				//update colors
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						pieces[i][j].setFillColor(pieceColors[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_RIGHT_2_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_SOLVED:
+			{
+				//update colors
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						pieces[i][j].setFillColor(pieceColors[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_LEFT_1_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_SOLVED:
+			{
+				//update colors
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						pieces[i][j].setFillColor(pieceColors[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_LEFT_2_SOLVED_PAUSED:
 			{
 				break;
 			}
@@ -141,7 +237,7 @@ void Side::draw(RenderWindow& window, GameState& currState, GameState& nextState
 			{
 				break;
 			}
-		case MOVING_UNSOLVED:
+		case MOVING_RIGHT_1_UNSOLVED:
 			{
 				for(int i = 0; i < 3; i++)
 				{
@@ -152,7 +248,52 @@ void Side::draw(RenderWindow& window, GameState& currState, GameState& nextState
 				}
 				break;
 			}
-		case MOVING_UNSOLVED_PAUSED:
+		case MOVING_RIGHT_1_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_UNSOLVED:
+			{
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						window.draw(pieces[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_RIGHT_2_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_UNSOLVED:
+			{
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						window.draw(pieces[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_LEFT_1_UNSOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_UNSOLVED:
+			{
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						window.draw(pieces[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_LEFT_2_UNSOLVED_PAUSED:
 			{
 				break;
 			}
@@ -167,11 +308,11 @@ void Side::draw(RenderWindow& window, GameState& currState, GameState& nextState
 				}
 				break;
 			}
-		case IDLE_SOLVED_PAUSE:
+		case IDLE_SOLVED_PAUSED:
 			{
 				break;
 			}
-		case MOVING_SOLVED:
+		case MOVING_RIGHT_1_SOLVED:
 			{
 				for(int i = 0; i < 3; i++)
 				{
@@ -182,7 +323,52 @@ void Side::draw(RenderWindow& window, GameState& currState, GameState& nextState
 				}
 				break;
 			}
-		case MOVING_SOLVED_PAUSE:
+		case MOVING_RIGHT_1_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_RIGHT_2_SOLVED:
+			{
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						window.draw(pieces[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_RIGHT_2_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_1_SOLVED:
+			{
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						window.draw(pieces[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_LEFT_1_SOLVED_PAUSED:
+			{
+				break;
+			}
+		case MOVING_LEFT_2_SOLVED:
+			{
+				for(int i = 0; i < 3; i++)
+				{
+					for(int j = 0; j < 3; j++)
+					{
+						window.draw(pieces[i][j]);
+					}
+				}
+				break;
+			}
+		case MOVING_LEFT_2_SOLVED_PAUSED:
 			{
 				break;
 			}
