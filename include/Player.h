@@ -14,10 +14,10 @@ class Player
 	unsigned int currentRow;
 	unsigned int currentCol;
 
-	double moveProgress = 0.f;
+	float moveProgress = 0.f;
 	Direction direction;
 
-	void move(Vector2f targetPos);
+	void move(GameState& currState, GameState& nextState);
 public:
 	Player();
 	void update(GameState& currState, GameState& nextState);

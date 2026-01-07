@@ -6,4 +6,6 @@
 #define PIECE_SIZE 150
 #define PADDING 5
 
+#define MOVE_FACTOR 1.f/60
+
 #endif

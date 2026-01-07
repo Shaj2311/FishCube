@@ -1,6 +1,10 @@
 #ifndef STATE_H
 #define STATE_H
 
+#include <SFML/Graphics.hpp>
+
+using namespace sf;
+
 enum GameState
 {
 	START,
