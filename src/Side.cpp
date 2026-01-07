@@ -3,7 +3,6 @@
 Side::Side()
 {
 
-	this->setPosition(100, 100);
 	this->setPosition(
 			(WINDOW_WIDTH/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f,
 			(WINDOW_HEIGHT/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f
@@ -42,6 +41,11 @@ void Side::update(GameState& currState, GameState& nextState)
 			}
 		case IDLE_UNSOLVED:
 			{
+				//update positions (to cater for rotations)
+				this->setPosition(
+						(WINDOW_WIDTH/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f,
+						(WINDOW_HEIGHT/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f
+						);
 				break;
 			}
 		case IDLE_UNSOLVED_PAUSED:
@@ -58,6 +62,11 @@ void Side::update(GameState& currState, GameState& nextState)
 			}
 		case IDLE_SOLVED:
 			{
+				//update positions (to cater for rotations)
+				this->setPosition(
+						(WINDOW_WIDTH/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f,
+						(WINDOW_HEIGHT/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f
+						);
 				break;
 			}
 		case IDLE_SOLVED_PAUSED:
@@ -181,4 +190,42 @@ void Side::setPosition(double x, double y)
 					);
 		}
 	}
+}
+
+
+void Side::rotateCW()
+{
+	//rotate side clockwise
+
+	//rotate corners
+	RectangleShape temp = pieces[0][0];
+	pieces[0][0] = pieces[2][0];
+	pieces[2][0] = pieces[2][2];
+	pieces[2][2] = pieces[0][2];
+	pieces[0][2] = temp;
+
+	//rotate edges
+	temp = pieces[0][1];
+	pieces[0][1] = pieces[1][0];
+	pieces[1][0] = pieces[2][1];
+	pieces[2][1] = pieces[1][2];
+	pieces[1][2] = temp;
+}
+void Side::rotateCCW()
+{
+	//rotate side counterclockwise
+
+	//rotate corners
+	RectangleShape temp = pieces[0][0];
+	pieces[0][0] = pieces[0][2];
+	pieces[0][2] = pieces[2][2];
+	pieces[2][2] = pieces[2][0];
+	pieces[2][0] = temp;
+
+	//rotate edges
+	temp = pieces[0][1];
+	pieces[0][1] = pieces[1][2];
+	pieces[1][2] = pieces[2][1];
+	pieces[2][1] = pieces[1][0];
+	pieces[1][0] = temp;
 }

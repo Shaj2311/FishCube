@@ -17,5 +17,8 @@ public:
 	void setPosition(double x, double y);
 
 	RectangleShape& getPiece(int row, int col){return pieces[row][col];}
+
+	void rotateCW();
+	void rotateCCW();
 };
 #endif
