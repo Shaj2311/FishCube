@@ -25,6 +25,9 @@ public:
 	
 	Direction getDirection(){return direction;}
 	void setDirection(Direction newDirection){direction = newDirection;}
+
+	unsigned int getRow(){return currentRow;}
+	unsigned int getCol(){return currentCol;}
 	
 };
 #endif
