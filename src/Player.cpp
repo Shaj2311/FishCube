@@ -48,67 +48,11 @@ void Player::update(GameState& currState, GameState& nextState)
 			{
 				break;
 			}
-		case MOVING_RIGHT_1_UNSOLVED:
+		case MOVING_UNSOLVED:
 			{
 				break;
 			}
-		case MOVING_RIGHT_1_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_RIGHT_2_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_RIGHT_2_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_LEFT_1_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_LEFT_1_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_LEFT_2_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_LEFT_2_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_UP_1_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_UP_1_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_UP_2_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_UP_2_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_DOWN_1_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_DOWN_1_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_DOWN_2_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_DOWN_2_UNSOLVED_PAUSED:
+		case MOVING_UNSOLVED_PAUSED:
 			{
 				break;
 			}
@@ -120,67 +64,11 @@ void Player::update(GameState& currState, GameState& nextState)
 			{
 				break;
 			}
-		case MOVING_RIGHT_1_SOLVED:
+		case MOVING_SOLVED:
 			{
 				break;
 			}
-		case MOVING_RIGHT_1_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_RIGHT_2_SOLVED:
-			{
-				break;
-			}
-		case MOVING_RIGHT_2_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_LEFT_1_SOLVED:
-			{
-				break;
-			}
-		case MOVING_LEFT_1_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_LEFT_2_SOLVED:
-			{
-				break;
-			}
-		case MOVING_LEFT_2_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_UP_1_SOLVED:
-			{
-				break;
-			}
-		case MOVING_UP_1_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_UP_2_SOLVED:
-			{
-				break;
-			}
-		case MOVING_UP_2_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_DOWN_1_SOLVED:
-			{
-				break;
-			}
-		case MOVING_DOWN_1_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_DOWN_2_SOLVED:
-			{
-				break;
-			}
-		case MOVING_DOWN_2_SOLVED_PAUSED:
+		case MOVING_SOLVED_PAUSED:
 			{
 				break;
 			}
@@ -216,156 +104,21 @@ void Player::draw(RenderWindow& window, GameState& currState, GameState& nextSta
 			{
 				break;
 			}
-		case MOVING_RIGHT_1_UNSOLVED:
+		case MOVING_UNSOLVED:
 			{
 				window.draw(*fishSprite);
 				break;
 			}
-		case MOVING_RIGHT_1_UNSOLVED_PAUSED:
+		case MOVING_UNSOLVED_PAUSED:
 			{
 				break;
 			}
-		case MOVING_RIGHT_2_UNSOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_RIGHT_2_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_LEFT_1_UNSOLVED:
+		case MOVING_SOLVED:
 			{
 				window.draw(*fishSprite);
 				break;
 			}
-		case MOVING_LEFT_1_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_LEFT_2_UNSOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_LEFT_2_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_UP_1_UNSOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_UP_1_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_UP_2_UNSOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_UP_2_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_DOWN_1_UNSOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_DOWN_1_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_DOWN_2_UNSOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_DOWN_2_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case IDLE_SOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case IDLE_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_RIGHT_1_SOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_RIGHT_1_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_RIGHT_2_SOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_RIGHT_2_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_LEFT_1_SOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_LEFT_1_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_LEFT_2_SOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_LEFT_2_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_UP_1_SOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_UP_1_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_UP_2_SOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_UP_2_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_DOWN_1_SOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_DOWN_1_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_DOWN_2_SOLVED:
-			{
-				window.draw(*fishSprite);
-				break;
-			}
-		case MOVING_DOWN_2_SOLVED_PAUSED:
+		case MOVING_SOLVED_PAUSED:
 			{
 				break;
 			}

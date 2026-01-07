@@ -23,67 +23,11 @@ void StateManager::switchToState(GameState newState)
 			{
 				break;
 			}
-		case MOVING_RIGHT_1_UNSOLVED:
+		case MOVING_UNSOLVED:
 			{
 				break;
 			}
-		case MOVING_RIGHT_1_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_RIGHT_2_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_RIGHT_2_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_LEFT_1_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_LEFT_1_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_LEFT_2_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_LEFT_2_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_UP_1_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_UP_1_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_UP_2_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_UP_2_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_DOWN_1_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_DOWN_1_UNSOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_DOWN_2_UNSOLVED:
-			{
-				break;
-			}
-		case MOVING_DOWN_2_UNSOLVED_PAUSED:
+		case MOVING_UNSOLVED_PAUSED:
 			{
 				break;
 			}
@@ -95,67 +39,11 @@ void StateManager::switchToState(GameState newState)
 			{
 				break;
 			}
-		case MOVING_RIGHT_1_SOLVED:
+		case MOVING_SOLVED:
 			{
 				break;
 			}
-		case MOVING_RIGHT_1_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_RIGHT_2_SOLVED:
-			{
-				break;
-			}
-		case MOVING_RIGHT_2_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_LEFT_1_SOLVED:
-			{
-				break;
-			}
-		case MOVING_LEFT_1_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_LEFT_2_SOLVED:
-			{
-				break;
-			}
-		case MOVING_LEFT_2_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_UP_1_SOLVED:
-			{
-				break;
-			}
-		case MOVING_UP_1_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_UP_2_SOLVED:
-			{
-				break;
-			}
-		case MOVING_UP_2_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_DOWN_1_SOLVED:
-			{
-				break;
-			}
-		case MOVING_DOWN_1_SOLVED_PAUSED:
-			{
-				break;
-			}
-		case MOVING_DOWN_2_SOLVED:
-			{
-				break;
-			}
-		case MOVING_DOWN_2_SOLVED_PAUSED:
+		case MOVING_SOLVED_PAUSED:
 			{
 				break;
 			}
