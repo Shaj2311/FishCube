@@ -110,7 +110,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 				{
 					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
 					{
-						//WASD
+						//WASD, Space for color swap
 						if(keyPressed->code == Keyboard::Key::W || keyPressed->code == Keyboard::Key::Up)
 						{
 							//UP PRESSED
@@ -118,6 +118,9 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 								p->setDirection(DOWN_2);
 							else
 								p->setDirection(UP_1);
+
+							//set next state
+							nextState = MOVING_UNSOLVED;
 						}
 						if(keyPressed->code == Keyboard::Key::S || keyPressed->code == Keyboard::Key::Down)
 						{
@@ -126,6 +129,9 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 								p->setDirection(UP_2);
 							else
 								p->setDirection(DOWN_1);
+
+							//set next state
+							nextState = MOVING_UNSOLVED;
 						}
 						if(keyPressed->code == Keyboard::Key::A || keyPressed->code == Keyboard::Key::Left)
 						{
@@ -134,6 +140,9 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 								p->setDirection(RIGHT_2);
 							else
 								p->setDirection(LEFT_1);
+
+							//set next state
+							nextState = MOVING_UNSOLVED;
 						}
 						if(keyPressed->code == Keyboard::Key::D || keyPressed->code == Keyboard::Key::Right)
 						{
@@ -142,10 +151,14 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 								p->setDirection(LEFT_2);
 							else
 								p->setDirection(RIGHT_1);
-						}
 
-						//set next state
-						nextState = MOVING_UNSOLVED;
+							//set next state
+							nextState = MOVING_UNSOLVED;
+						}
+						if(keyPressed->code == Keyboard::Key::Space)
+						{
+							swapColors();
+						}
 					}
 					break;
 				}
@@ -226,4 +239,17 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 				}
 		}
 	}
+}
+
+void Game::swapColors()
+{
+	//swap player and piece colors
+	int row = p->getRow();
+	int col = p->getCol();
+
+	Color playerColor = p->getColor();
+	RectangleShape& currentPiece = s->getPiece(row, col);
+
+	p->setColor(currentPiece.getFillColor());
+	currentPiece.setFillColor(playerColor);
 }

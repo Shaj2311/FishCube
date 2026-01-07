@@ -9,6 +9,9 @@ class Game
 	//only one side for now
 	Side* s;
 	Player* p;
+
+	void swapColors();
+
 public:
 	Game();
 	~Game(){delete s;}

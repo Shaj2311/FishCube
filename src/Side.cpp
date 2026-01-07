@@ -17,11 +17,11 @@ Side::Side()
 
 			//hardcode colors for now
 			if(i == 0)
-				pieceColors[i][j] = Color::Blue;
+				pieces[i][j].setFillColor(Color::Blue);
 			if(i == 1)
-				pieceColors[i][j] = Color::Red;
+				pieces[i][j].setFillColor(Color::Red);
 			if(i == 2)
-				pieceColors[i][j] = Color::Green;
+				pieces[i][j].setFillColor(Color::Green);
 
 		}
 	}
@@ -42,14 +42,6 @@ void Side::update(GameState& currState, GameState& nextState)
 			}
 		case IDLE_UNSOLVED:
 			{
-				//update colors
-				for(int i = 0; i < 3; i++)
-				{
-					for(int j = 0; j < 3; j++)
-					{
-						pieces[i][j].setFillColor(pieceColors[i][j]);
-					}
-				}
 				break;
 			}
 		case IDLE_UNSOLVED_PAUSED:
@@ -58,14 +50,6 @@ void Side::update(GameState& currState, GameState& nextState)
 			}
 		case MOVING_UNSOLVED:
 			{
-				//update colors
-				for(int i = 0; i < 3; i++)
-				{
-					for(int j = 0; j < 3; j++)
-					{
-						pieces[i][j].setFillColor(pieceColors[i][j]);
-					}
-				}
 				break;
 			}
 		case MOVING_UNSOLVED_PAUSED:
@@ -74,14 +58,6 @@ void Side::update(GameState& currState, GameState& nextState)
 			}
 		case IDLE_SOLVED:
 			{
-				//update colors
-				for(int i = 0; i < 3; i++)
-				{
-					for(int j = 0; j < 3; j++)
-					{
-						pieces[i][j].setFillColor(pieceColors[i][j]);
-					}
-				}
 				break;
 			}
 		case IDLE_SOLVED_PAUSED:
@@ -90,14 +66,6 @@ void Side::update(GameState& currState, GameState& nextState)
 			}
 		case MOVING_SOLVED:
 			{
-				//update colors
-				for(int i = 0; i < 3; i++)
-				{
-					for(int j = 0; j < 3; j++)
-					{
-						pieces[i][j].setFillColor(pieceColors[i][j]);
-					}
-				}
 				break;
 			}
 		case MOVING_SOLVED_PAUSED:

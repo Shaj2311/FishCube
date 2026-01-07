@@ -28,6 +28,9 @@ public:
 
 	unsigned int getRow(){return currentRow;}
 	unsigned int getCol(){return currentCol;}
+
+	Color getColor(){return fishSprite->getColor();}
+	void setColor(Color c){fishSprite->setColor(c);}
 	
 };
 #endif

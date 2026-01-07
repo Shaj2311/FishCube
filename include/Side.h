@@ -8,7 +8,6 @@ class Side
 {
 	//9 pieces
 	RectangleShape pieces[3][3];
-	Color pieceColors[3][3];
 
 public:
 	Side();
@@ -16,5 +15,7 @@ public:
 	void draw(RenderWindow& window, GameState& currState, GameState& nextState);
 
 	void setPosition(double x, double y);
+
+	RectangleShape& getPiece(int row, int col){return pieces[row][col];}
 };
 #endif
