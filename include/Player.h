@@ -14,7 +14,6 @@ class Player
 	unsigned int currentRow;
 	unsigned int currentCol;
 
-	float moveProgress = 0.f;
 	Direction direction;
 
 	void move(GameState& currState, GameState& nextState);

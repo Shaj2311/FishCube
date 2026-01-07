@@ -42,8 +42,6 @@ void Player::update(GameState& currState, GameState& nextState)
 			}
 		case IDLE_UNSOLVED:
 			{
-				//reset move progress
-				moveProgress = 0.f;
 				break;
 			}
 		case IDLE_UNSOLVED_PAUSED:
@@ -62,8 +60,6 @@ void Player::update(GameState& currState, GameState& nextState)
 			}
 		case IDLE_SOLVED:
 			{
-				//reset move progress
-				moveProgress = 0.f;
 				break;
 			}
 		case IDLE_SOLVED_PAUSED:
@@ -153,6 +149,7 @@ void Player::draw(RenderWindow& window, GameState& currState, GameState& nextSta
 
 void Player::move(GameState& currState, GameState& nextState)
 {
+	static float moveProgress = 0.f;
 	static Vector2f startingPos = fishSprite->getPosition();
 
 	//compute target position and update current row/col
@@ -216,6 +213,7 @@ void Player::move(GameState& currState, GameState& nextState)
 			nextState = IDLE_SOLVED;
 
 		//reset static vars
+		moveProgress = 0.f;
 		startingPos = fishSprite->getPosition();
 	}
 
