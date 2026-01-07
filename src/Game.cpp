@@ -16,10 +16,10 @@ void Game::update(GameState& currState, GameState& nextState)
 			}
 		case GAME_START:
 			{
-				//reset side
-				s = new Side();
+				//reset cube
+				cube = new Cube();
 				//reset player
-				p = new Player();
+				player = new Player();
 
 				//start game
 				nextState = IDLE_UNSOLVED;
@@ -68,15 +68,15 @@ void Game::update(GameState& currState, GameState& nextState)
 	}
 	pollEvents(currState, nextState);
 
-	s->update(currState, nextState);
-	p->update(currState, nextState);
+	cube->update(currState, nextState);
+	player->update(currState, nextState);
 }
 
 void Game::draw(GameState& currState, GameState& nextState)
 {
 	window.clear();
-	s->draw(window, currState, nextState);
-	p->draw(window, currState, nextState);
+	cube->draw(window, currState, nextState);
+	player->draw(window, currState, nextState);
 	window.display();
 }
 
@@ -114,10 +114,10 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						if(keyPressed->code == Keyboard::Key::W || keyPressed->code == Keyboard::Key::Up)
 						{
 							//UP PRESSED
-							if(p->getRow() == 0)
-								p->setDirection(DOWN_2);
+							if(player->getRow() == 0)
+								player->setDirection(DOWN_2);
 							else
-								p->setDirection(UP_1);
+								player->setDirection(UP_1);
 
 							//set next state
 							nextState = MOVING_UNSOLVED;
@@ -125,10 +125,10 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						if(keyPressed->code == Keyboard::Key::S || keyPressed->code == Keyboard::Key::Down)
 						{
 							//UP PRESSED
-							if(p->getRow() == 2)
-								p->setDirection(UP_2);
+							if(player->getRow() == 2)
+								player->setDirection(UP_2);
 							else
-								p->setDirection(DOWN_1);
+								player->setDirection(DOWN_1);
 
 							//set next state
 							nextState = MOVING_UNSOLVED;
@@ -136,10 +136,10 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						if(keyPressed->code == Keyboard::Key::A || keyPressed->code == Keyboard::Key::Left)
 						{
 							//UP PRESSED
-							if(p->getCol() == 0)
-								p->setDirection(RIGHT_2);
+							if(player->getCol() == 0)
+								player->setDirection(RIGHT_2);
 							else
-								p->setDirection(LEFT_1);
+								player->setDirection(LEFT_1);
 
 							//set next state
 							nextState = MOVING_UNSOLVED;
@@ -147,10 +147,10 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						if(keyPressed->code == Keyboard::Key::D || keyPressed->code == Keyboard::Key::Right)
 						{
 							//UP PRESSED
-							if(p->getCol() == 2)
-								p->setDirection(LEFT_2);
+							if(player->getCol() == 2)
+								player->setDirection(LEFT_2);
 							else
-								p->setDirection(RIGHT_1);
+								player->setDirection(RIGHT_1);
 
 							//set next state
 							nextState = MOVING_UNSOLVED;
@@ -182,34 +182,34 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						if(keyPressed->code == Keyboard::Key::W || keyPressed->code == Keyboard::Key::Up)
 						{
 							//UP PRESSED
-							if(p->getRow() == 0)
-								p->setDirection(DOWN_2);
+							if(player->getRow() == 0)
+								player->setDirection(DOWN_2);
 							else
-								p->setDirection(UP_1);
+								player->setDirection(UP_1);
 						}
 						if(keyPressed->code == Keyboard::Key::S || keyPressed->code == Keyboard::Key::Down)
 						{
 							//UP PRESSED
-							if(p->getRow() == 2)
-								p->setDirection(UP_2);
+							if(player->getRow() == 2)
+								player->setDirection(UP_2);
 							else
-								p->setDirection(DOWN_1);
+								player->setDirection(DOWN_1);
 						}
 						if(keyPressed->code == Keyboard::Key::A || keyPressed->code == Keyboard::Key::Left)
 						{
 							//UP PRESSED
-							if(p->getCol() == 0)
-								p->setDirection(RIGHT_2);
+							if(player->getCol() == 0)
+								player->setDirection(RIGHT_2);
 							else
-								p->setDirection(LEFT_1);
+								player->setDirection(LEFT_1);
 						}
 						if(keyPressed->code == Keyboard::Key::D || keyPressed->code == Keyboard::Key::Right)
 						{
 							//UP PRESSED
-							if(p->getCol() == 2)
-								p->setDirection(LEFT_2);
+							if(player->getCol() == 2)
+								player->setDirection(LEFT_2);
 							else
-								p->setDirection(RIGHT_1);
+								player->setDirection(RIGHT_1);
 						}
 
 						//set next state
@@ -244,12 +244,12 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 void Game::swapColors()
 {
 	//swap player and piece colors
-	int row = p->getRow();
-	int col = p->getCol();
+	int row = player->getRow();
+	int col = player->getCol();
 
-	Color playerColor = p->getColor();
-	RectangleShape& currentPiece = s->getPiece(row, col);
+	Color playerColor = player->getColor();
+	RectangleShape& currentPiece = cube->getFrontSide()->getPiece(row, col);
 
-	p->setColor(currentPiece.getFillColor());
+	player->setColor(currentPiece.getFillColor());
 	currentPiece.setFillColor(playerColor);
 }
