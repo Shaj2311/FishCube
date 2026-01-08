@@ -25,6 +25,13 @@ void Cube::update(GameState& currState, GameState& nextState)
 			}
 		case IDLE_UNSOLVED:
 			{
+				//update all sides
+				front->update(currState, nextState);
+				back->update(currState, nextState);
+				up->update(currState, nextState);
+				down->update(currState, nextState);
+				right->update(currState, nextState);
+				left->update(currState, nextState);
 				break;
 			}
 		case IDLE_UNSOLVED_PAUSED:
@@ -33,6 +40,13 @@ void Cube::update(GameState& currState, GameState& nextState)
 			}
 		case MOVING_UNSOLVED:
 			{
+				//update all sides
+				front->update(currState, nextState);
+				back->update(currState, nextState);
+				up->update(currState, nextState);
+				down->update(currState, nextState);
+				right->update(currState, nextState);
+				left->update(currState, nextState);
 				break;
 			}
 		case MOVING_UNSOLVED_PAUSED:
@@ -42,6 +56,13 @@ void Cube::update(GameState& currState, GameState& nextState)
 		case IDLE_SOLVED:
 			{
 				break;
+				//update all sides
+				front->update(currState, nextState);
+				back->update(currState, nextState);
+				up->update(currState, nextState);
+				down->update(currState, nextState);
+				right->update(currState, nextState);
+				left->update(currState, nextState);
 			}
 		case IDLE_SOLVED_PAUSED:
 			{
@@ -49,6 +70,13 @@ void Cube::update(GameState& currState, GameState& nextState)
 			}
 		case MOVING_SOLVED:
 			{
+				//update all sides
+				front->update(currState, nextState);
+				back->update(currState, nextState);
+				up->update(currState, nextState);
+				down->update(currState, nextState);
+				right->update(currState, nextState);
+				left->update(currState, nextState);
 				break;
 			}
 		case MOVING_SOLVED_PAUSED:
@@ -63,14 +91,6 @@ void Cube::update(GameState& currState, GameState& nextState)
 			{
 				break;
 			}
-			
-		//update all sides
-		front->update(currState, nextState);
-		back->update(currState, nextState);
-		up->update(currState, nextState);
-		down->update(currState, nextState);
-		right->update(currState, nextState);
-		left->update(currState, nextState);
 	}
 }
 void Cube::draw(RenderWindow& window, GameState& currState, GameState& nextState)
@@ -134,7 +154,41 @@ void Cube::draw(RenderWindow& window, GameState& currState, GameState& nextState
 
 void Cube::rotateRight(GameState& currState, GameState& nextState)
 {
+	static float progress = 0.f;
+	static Side startingFrontSide = *front;
+	static Side startingLeftSide = *right;
 
+	if(progress == 0.f)
+	{
+		//mark initial state of sides
+		startingFrontSide = *front;
+		startingLeftSide = *left;
+	}
+
+	//update progress
+	progress += MOVE_FACTOR;
+
+	//animation complete
+	if(progress >= 1.f)
+	{
+		//reset progress
+		progress = 0.f;
+
+		//update sides
+		Side* temp = front;
+		front = left;
+		left = back;
+		back = right;
+		right = temp;
+		up->rotateCCW();
+		down->rotateCW();
+
+		//update state
+		if(currState == MOVING_UNSOLVED)
+			nextState = IDLE_UNSOLVED;
+		if(currState == MOVING_SOLVED)
+			nextState = IDLE_SOLVED;
+	}
 }
 void Cube::rotateLeft(GameState& currState, GameState& nextState)
 {
@@ -149,9 +203,10 @@ void Cube::rotateLeft(GameState& currState, GameState& nextState)
 		startingRightSide = *right;
 	}
 
-	//interpolate
-	front->shrinkLeft(startingFrontSide, progress);
-	right->growLeft(startingRightSide, progress);
+	//NO ANIMATIONS FOR NOW
+	////interpolate
+	//front->shrinkLeft(startingFrontSide, progress);
+	//right->growLeft(startingRightSide, progress);
 
 	//update progress
 	progress += MOVE_FACTOR;
@@ -180,9 +235,98 @@ void Cube::rotateLeft(GameState& currState, GameState& nextState)
 }
 void Cube::rotateUp(GameState& currState, GameState& nextState)
 {
+	static float progress = 0.f;
+	static Side startingFrontSide = *front;
+	static Side startingDownSide = *down;
+
+	if(progress == 0.f)
+	{
+		//mark initial state of sides
+		startingFrontSide = *front;
+		startingDownSide = *down;
+	}
+
+	//NO ANIMATIONS FOR NOW
+	////interpolate
+	//front->shrinkLeft(startingFrontSide, progress);
+	//right->growLeft(startingRightSide, progress);
+
+	//update progress
+	progress += MOVE_FACTOR;
+
+	//animation complete
+	if(progress >= 1.f)
+	{
+		//reset progress
+		progress = 0.f;
+
+		//update sides
+		Side* temp = front;
+		front = down;
+		down = back;
+		back = up;
+		up = temp;
+		left->rotateCCW();
+		right->rotateCW();
+
+		back->rotateCW();
+		back->rotateCW();
+		down->rotateCW();
+		down->rotateCW();
+
+		//update state
+		if(currState == MOVING_UNSOLVED)
+			nextState = IDLE_UNSOLVED;
+		if(currState == MOVING_SOLVED)
+			nextState = IDLE_SOLVED;
+	}
 
 }
 void Cube::rotateDown(GameState& currState, GameState& nextState)
 {
+	static float progress = 0.f;
+	static Side startingFrontSide = *front;
+	static Side startingUpSide = *up;
 
+	if(progress == 0.f)
+	{
+		//mark initial state of sides
+		startingFrontSide = *front;
+		startingUpSide = *up;
+	}
+
+	//NO ANIMATIONS FOR NOW
+	////interpolate
+	//front->shrinkLeft(startingFrontSide, progress);
+	//right->growLeft(startingRightSide, progress);
+
+	//update progress
+	progress += MOVE_FACTOR;
+
+	//animation complete
+	if(progress >= 1.f)
+	{
+		//reset progress
+		progress = 0.f;
+
+		//update sides
+		Side* temp = front;
+		front = up;
+		up = back;
+		back = down;
+		down = temp;
+		left->rotateCW();
+		right->rotateCCW();
+
+		back->rotateCW();
+		back->rotateCW();
+		up->rotateCW();
+		up->rotateCW();
+
+		//update state
+		if(currState == MOVING_UNSOLVED)
+			nextState = IDLE_UNSOLVED;
+		if(currState == MOVING_SOLVED)
+			nextState = IDLE_SOLVED;
+	}
 }

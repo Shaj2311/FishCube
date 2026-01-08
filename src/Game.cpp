@@ -39,12 +39,12 @@ void Game::update(GameState& currState, GameState& nextState)
 				//FIXME handling only left cube rotation for now
 				if(player->getDirection() == LEFT_2)
 					cube->rotateLeft(currState, nextState);
-				//if(player->getDirection() == RIGHT_2)
-				//	cube->rotateRight();
-				//if(player->getDirection() == DOWN_2)
-				//	cube->rotateDown();
-				//if(player->getDirection() == UP_2)
-				//	cube->rotateUp();
+				if(player->getDirection() == RIGHT_2)
+					cube->rotateRight(currState, nextState);
+				if(player->getDirection() == DOWN_2)
+					cube->rotateDown(currState, nextState);
+				if(player->getDirection() == UP_2)
+					cube->rotateUp(currState, nextState);
 				break;
 			}
 		case MOVING_UNSOLVED_PAUSED:
@@ -196,6 +196,9 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 								player->setDirection(DOWN_2);
 							else
 								player->setDirection(UP_1);
+
+							//set next state
+							nextState = MOVING_SOLVED;
 						}
 						if(keyPressed->code == Keyboard::Key::S || keyPressed->code == Keyboard::Key::Down)
 						{
@@ -204,6 +207,9 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 								player->setDirection(UP_2);
 							else
 								player->setDirection(DOWN_1);
+
+							//set next state
+							nextState = MOVING_SOLVED;
 						}
 						if(keyPressed->code == Keyboard::Key::A || keyPressed->code == Keyboard::Key::Left)
 						{
@@ -212,6 +218,9 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 								player->setDirection(RIGHT_2);
 							else
 								player->setDirection(LEFT_1);
+
+							//set next state
+							nextState = MOVING_SOLVED;
 						}
 						if(keyPressed->code == Keyboard::Key::D || keyPressed->code == Keyboard::Key::Right)
 						{
@@ -220,10 +229,10 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 								player->setDirection(LEFT_2);
 							else
 								player->setDirection(RIGHT_1);
-						}
 
-						//set next state
-						nextState = MOVING_SOLVED;
+							//set next state
+							nextState = MOVING_SOLVED;
+						}
 					}
 					break;
 				}
