@@ -4,8 +4,8 @@ Side::Side()
 {
 
 	this->setPosition(
-			(WINDOW_WIDTH/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f,
-			(WINDOW_HEIGHT/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f
+			TOP_LEFT_X,
+			TOP_LEFT_Y
 			);
 	for(int i = 0; i < 3; i++)
 	{
@@ -43,8 +43,8 @@ void Side::update(GameState& currState, GameState& nextState)
 			{
 				//update positions (to cater for rotations)
 				this->setPosition(
-						(WINDOW_WIDTH/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f,
-						(WINDOW_HEIGHT/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f
+						TOP_LEFT_X,
+						TOP_LEFT_Y
 						);
 				break;
 			}
@@ -64,8 +64,8 @@ void Side::update(GameState& currState, GameState& nextState)
 			{
 				//update positions (to cater for rotations)
 				this->setPosition(
-						(WINDOW_WIDTH/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f,
-						(WINDOW_HEIGHT/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f
+						TOP_LEFT_X,
+						TOP_LEFT_Y
 						);
 				break;
 			}
@@ -232,10 +232,9 @@ void Side::rotateCCW()
 
 void Side::shrinkLeft(Side startSide, float progress)
 {
-
 	Vector2f targetPos = {
-			(WINDOW_WIDTH/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f,
-			(WINDOW_HEIGHT/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f
+		TOP_LEFT_X,
+		TOP_LEFT_Y
 			};
 	for(int i = 0; i < 3; i++)
 	{
@@ -255,6 +254,14 @@ void Side::shrinkLeft(Side startSide, float progress)
 		}
 	}
 }
+
+void Side::shrinkRight(Side startSide, float progress)
+{
+
+}
 void Side::growLeft(Side startSide, float progress)
+{
+}
+void Side::growRight(Side startSide, float progress)
 {
 }

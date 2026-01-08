@@ -8,4 +8,6 @@
 
 #define MOVE_FACTOR 1.f/60
 
+#define TOP_LEFT_X (WINDOW_WIDTH/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f
+#define TOP_LEFT_Y (WINDOW_HEIGHT/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f
 #endif
