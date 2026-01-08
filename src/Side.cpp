@@ -229,3 +229,32 @@ void Side::rotateCCW()
 	pieces[2][1] = pieces[1][0];
 	pieces[1][0] = temp;
 }
+
+void Side::shrinkLeft(Side startSide, float progress)
+{
+
+	Vector2f targetPos = {
+			(WINDOW_WIDTH/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f,
+			(WINDOW_HEIGHT/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f
+			};
+	for(int i = 0; i < 3; i++)
+	{
+		for(int j = 0; j < 3; j++)
+		{
+			//translate
+			pieces[i][j].setPosition({
+					startSide.getPiece(i,j).getPosition().x + (targetPos.x - startSide.getPiece(i,j).getPosition().x) * progress,
+					startSide.getPiece(i,j).getPosition().y
+					});
+
+			//compress
+			pieces[i][j].setScale({
+					startSide.getPiece(i,j).getScale().x - (startSide.getPiece(i,j).getScale().x * progress),
+					startSide.getPiece(i,j).getScale().y
+					});
+		}
+	}
+}
+void Side::growLeft(Side startSide, float progress)
+{
+}

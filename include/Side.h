@@ -20,5 +20,15 @@ public:
 
 	void rotateCW();
 	void rotateCCW();
+
+	void shrinkLeft(Side startSide, float progress);
+	void shrinkRight(Side startSide, float progress);
+	void shrinkUp(Side startSide, float progress);
+	void shrinkDown(Side startSide, float progress);
+
+	void growLeft(Side startSide, float progress);
+	void growRight(Side startSide, float progress);
+	void growUp(Side startSide, float progress);
+	void growDown(Side startSide, float progress);
 };
 #endif

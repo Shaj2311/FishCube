@@ -131,3 +131,58 @@ void Cube::draw(RenderWindow& window, GameState& currState, GameState& nextState
 			}
 	}
 }
+
+void Cube::rotateRight(GameState& currState, GameState& nextState)
+{
+
+}
+void Cube::rotateLeft(GameState& currState, GameState& nextState)
+{
+	static float progress = 0.f;
+	static Side startingFrontSide = *front;
+	static Side startingRightSide = *right;
+
+	if(progress == 0.f)
+	{
+		//mark initial state of sides
+		startingFrontSide = *front;
+		startingRightSide = *right;
+	}
+
+	//interpolate
+	front->shrinkLeft(startingFrontSide, progress);
+	right->growLeft(startingRightSide, progress);
+
+	//update progress
+	progress += MOVE_FACTOR;
+
+	//animation complete
+	if(progress >= 1.f)
+	{
+		//reset progress
+		progress = 0.f;
+
+		//update sides
+		Side* temp = front;
+		front = right;
+		right = back;
+		back = left;
+		left = temp;
+		up->rotateCW();
+		down->rotateCCW();
+
+		//update state
+		if(currState == MOVING_UNSOLVED)
+			nextState = IDLE_UNSOLVED;
+		if(currState == MOVING_SOLVED)
+			nextState = IDLE_SOLVED;
+	}
+}
+void Cube::rotateUp(GameState& currState, GameState& nextState)
+{
+
+}
+void Cube::rotateDown(GameState& currState, GameState& nextState)
+{
+
+}

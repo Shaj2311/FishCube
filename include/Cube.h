@@ -19,6 +19,11 @@ public:
 	void update(GameState& currState, GameState& nextState);
 	void draw(RenderWindow& window, GameState& currState, GameState& nextState);
 
+	void rotateRight(GameState& currState, GameState& nextState);
+	void rotateLeft(GameState& currState, GameState& nextState);
+	void rotateUp(GameState& currState, GameState& nextState);
+	void rotateDown(GameState& currState, GameState& nextState);
+
 	Side* getFrontSide(){return front;}
 };
 #endif

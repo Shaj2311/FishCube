@@ -35,6 +35,16 @@ void Game::update(GameState& currState, GameState& nextState)
 			}
 		case MOVING_UNSOLVED:
 			{
+				//if cube needs rotation, rotate it
+				//FIXME handling only left cube rotation for now
+				if(player->getDirection() == LEFT_2)
+					cube->rotateLeft(currState, nextState);
+				//if(player->getDirection() == RIGHT_2)
+				//	cube->rotateRight();
+				//if(player->getDirection() == DOWN_2)
+				//	cube->rotateDown();
+				//if(player->getDirection() == UP_2)
+				//	cube->rotateUp();
 				break;
 			}
 		case MOVING_UNSOLVED_PAUSED:
@@ -124,7 +134,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						}
 						if(keyPressed->code == Keyboard::Key::S || keyPressed->code == Keyboard::Key::Down)
 						{
-							//UP PRESSED
+							//DOWN PRESSED
 							if(player->getRow() == 2)
 								player->setDirection(UP_2);
 							else
@@ -135,7 +145,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						}
 						if(keyPressed->code == Keyboard::Key::A || keyPressed->code == Keyboard::Key::Left)
 						{
-							//UP PRESSED
+							//LEFT PRESSED
 							if(player->getCol() == 0)
 								player->setDirection(RIGHT_2);
 							else
@@ -146,7 +156,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						}
 						if(keyPressed->code == Keyboard::Key::D || keyPressed->code == Keyboard::Key::Right)
 						{
-							//UP PRESSED
+							//RIGHT PRESSED
 							if(player->getCol() == 2)
 								player->setDirection(LEFT_2);
 							else
