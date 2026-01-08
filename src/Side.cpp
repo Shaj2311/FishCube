@@ -232,17 +232,13 @@ void Side::rotateCCW()
 
 void Side::shrinkLeft(Side startSide, float progress)
 {
-	Vector2f targetPos = {
-		CUBE_LEFT_X,
-		CUBE_TOP_Y
-			};
 	for(int i = 0; i < 3; i++)
 	{
 		for(int j = 0; j < 3; j++)
 		{
 			//translate
 			pieces[i][j].setPosition({
-					startSide.getPiece(i,j).getPosition().x + (targetPos.x - startSide.getPiece(i,j).getPosition().x) * progress,
+					startSide.getPiece(i,j).getPosition().x + (CUBE_LEFT_X - startSide.getPiece(i,j).getPosition().x) * progress,
 					startSide.getPiece(i,j).getPosition().y
 					});
 
@@ -260,20 +256,6 @@ void Side::shrinkRight(Side startSide, float progress)
 }
 void Side::growLeft(Side startSide, float progress)
 {
-	//completely shrink side on first iteration
-	if(progress == 0)
-	{
-		//translate
-		pieces[0][0].setPosition({
-				CUBE_RIGHT_X,
-				CUBE_TOP_Y
-				});
-		//compress
-		pieces[0][0].setScale({
-				0,
-				pieces[0][0].getScale().y
-				});
-	}
 	for(int i = 0; i < 3; i++)
 	{
 		for(int j = 0; j < 3; j++)
