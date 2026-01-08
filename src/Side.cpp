@@ -4,8 +4,8 @@ Side::Side()
 {
 
 	this->setPosition(
-			TOP_LEFT_X,
-			TOP_LEFT_Y
+			CUBE_LEFT_X,
+			CUBE_TOP_Y
 			);
 	for(int i = 0; i < 3; i++)
 	{
@@ -43,8 +43,8 @@ void Side::update(GameState& currState, GameState& nextState)
 			{
 				//update positions (to cater for rotations)
 				this->setPosition(
-						TOP_LEFT_X,
-						TOP_LEFT_Y
+						CUBE_LEFT_X,
+						CUBE_TOP_Y
 						);
 				break;
 			}
@@ -64,8 +64,8 @@ void Side::update(GameState& currState, GameState& nextState)
 			{
 				//update positions (to cater for rotations)
 				this->setPosition(
-						TOP_LEFT_X,
-						TOP_LEFT_Y
+						CUBE_LEFT_X,
+						CUBE_TOP_Y
 						);
 				break;
 			}
@@ -233,8 +233,8 @@ void Side::rotateCCW()
 void Side::shrinkLeft(Side startSide, float progress)
 {
 	Vector2f targetPos = {
-		TOP_LEFT_X,
-		TOP_LEFT_Y
+		CUBE_LEFT_X,
+		CUBE_TOP_Y
 			};
 	for(int i = 0; i < 3; i++)
 	{
@@ -265,8 +265,8 @@ void Side::growLeft(Side startSide, float progress)
 	{
 		//translate
 		pieces[0][0].setPosition({
-				TOP_RIGHT_X,
-				TOP_RIGHT_Y
+				CUBE_RIGHT_X,
+				CUBE_TOP_Y
 				});
 		//compress
 		pieces[0][0].setScale({
@@ -280,7 +280,7 @@ void Side::growLeft(Side startSide, float progress)
 		{
 			//translate
 			pieces[i][j].setPosition({
-					((TOP_RIGHT_X) + ((startSide.getPiece(i,j).getPosition().x) - (TOP_RIGHT_X)) * progress),
+					((CUBE_RIGHT_X) + ((startSide.getPiece(i,j).getPosition().x) - (CUBE_RIGHT_X)) * progress),
 					pieces[i][j].getPosition().y
 					});
 			//expand
