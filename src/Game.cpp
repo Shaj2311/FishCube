@@ -85,7 +85,7 @@ void Game::update(GameState& currState, GameState& nextState)
 void Game::draw(GameState& currState, GameState& nextState)
 {
 	window.clear();
-	cube->draw(window, currState, nextState);
+	cube->draw(window, currState, nextState, player->getDirection());
 	player->draw(window, currState, nextState);
 	window.display();
 }

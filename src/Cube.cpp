@@ -93,7 +93,7 @@ void Cube::update(GameState& currState, GameState& nextState)
 			}
 	}
 }
-void Cube::draw(RenderWindow& window, GameState& currState, GameState& nextState)
+void Cube::draw(RenderWindow& window, GameState& currState, GameState& nextState, Direction dir = RIGHT_1)
 {
 	switch(currState)
 	{
@@ -117,6 +117,21 @@ void Cube::draw(RenderWindow& window, GameState& currState, GameState& nextState
 		case MOVING_UNSOLVED:
 			{
 				front->draw(window, currState, nextState);
+				switch(dir)
+				{
+					case LEFT_2:
+						right->draw(window, currState, nextState);
+						break;
+					case RIGHT_2:
+						left->draw(window, currState, nextState);
+						break;
+					case UP_2:
+						down->draw(window, currState, nextState);
+						break;
+					case DOWN_2:
+						up->draw(window, currState, nextState);
+						break;
+				}
 				break;
 			}
 		case MOVING_UNSOLVED_PAUSED:
@@ -135,6 +150,21 @@ void Cube::draw(RenderWindow& window, GameState& currState, GameState& nextState
 		case MOVING_SOLVED:
 			{
 				front->draw(window, currState, nextState);
+				switch(dir)
+				{
+					case LEFT_2:
+						left->draw(window, currState, nextState);
+						break;
+					case RIGHT_2:
+						right->draw(window, currState, nextState);
+						break;
+					case UP_2:
+						up->draw(window, currState, nextState);
+						break;
+					case DOWN_2:
+						down->draw(window, currState, nextState);
+						break;
+				}
 				break;
 			}
 		case MOVING_SOLVED_PAUSED:

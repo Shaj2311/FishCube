@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Side.h"
 #include "State.h"
+#include "Direction.h"
 class Cube
 {
 	//6 sides
@@ -17,7 +18,7 @@ public:
 	Cube();
 
 	void update(GameState& currState, GameState& nextState);
-	void draw(RenderWindow& window, GameState& currState, GameState& nextState);
+	void draw(RenderWindow& window, GameState& currState, GameState& nextState, Direction dir);
 
 	void rotateRight(GameState& currState, GameState& nextState);
 	void rotateLeft(GameState& currState, GameState& nextState);

@@ -274,13 +274,11 @@ void Side::growLeft(Side startSide, float progress)
 				pieces[0][0].getScale().y
 				});
 	}
-	//MAKE SURE TO ACTUALLY PRINT THIS (NON-FRONT) SIDE
-	//translate
 	for(int i = 0; i < 3; i++)
 	{
 		for(int j = 0; j < 3; j++)
 		{
-
+			//translate
 			pieces[i][j].setPosition({
 					((TOP_RIGHT_X) + ((startSide.getPiece(i,j).getPosition().x) - (TOP_RIGHT_X)) * progress),
 					pieces[i][j].getPosition().y
