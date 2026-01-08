@@ -257,10 +257,43 @@ void Side::shrinkLeft(Side startSide, float progress)
 
 void Side::shrinkRight(Side startSide, float progress)
 {
-
 }
 void Side::growLeft(Side startSide, float progress)
 {
+	//completely shrink side on first iteration
+	if(progress == 0)
+	{
+		//translate
+		pieces[0][0].setPosition({
+				TOP_RIGHT_X,
+				TOP_RIGHT_Y
+				});
+		//compress
+		pieces[0][0].setScale({
+				0,
+				pieces[0][0].getScale().y
+				});
+	}
+	//MAKE SURE TO ACTUALLY PRINT THIS (NON-FRONT) SIDE
+	//translate
+	for(int i = 0; i < 3; i++)
+	{
+		for(int j = 0; j < 3; j++)
+		{
+
+			pieces[i][j].setPosition({
+					((TOP_RIGHT_X) + ((startSide.getPiece(i,j).getPosition().x) - (TOP_RIGHT_X)) * progress),
+					pieces[i][j].getPosition().y
+					});
+			//expand
+			pieces[i][j].setScale({
+					progress,
+					pieces[i][j].getScale().y
+					});
+		}
+	}
+
+
 }
 void Side::growRight(Side startSide, float progress)
 {
