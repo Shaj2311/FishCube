@@ -197,7 +197,7 @@ void Cube::rotateRight(GameState& currState, GameState& nextState)
 
 	//interpolate
 	front->shrinkRight(startingFrontSide, progress);
-	right->growRight(startingLeftSide, progress);
+	left->growRight(startingLeftSide, progress);
 
 	//update progress
 	progress += MOVE_FACTOR;
