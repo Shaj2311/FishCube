@@ -341,10 +341,9 @@ void Cube::rotateDown(GameState& currState, GameState& nextState)
 		startingUpSide = *up;
 	}
 
-	//NO ANIMATIONS FOR NOW
-	////interpolate
-	//front->shrinkLeft(startingFrontSide, progress);
-	//right->growLeft(startingRightSide, progress);
+	//interpolate
+	front->shrinkDown(startingFrontSide, progress);
+	up->growDown(startingUpSide, progress);
 
 	//update progress
 	progress += MOVE_FACTOR;

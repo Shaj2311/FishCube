@@ -291,6 +291,26 @@ void Side::shrinkUp(Side startSide, float progress)
 		}
 	}
 }
+void Side::shrinkDown(Side startSide, float progress)
+{
+	for(int i = 0; i < 3; i++)
+	{
+		for(int j = 0; j < 3; j++)
+		{
+			//translate
+			pieces[i][j].setPosition({
+					startSide.getPiece(i,j).getPosition().x,
+					startSide.getPiece(i,j).getPosition().y + (CUBE_BOTTOM_Y - startSide.getPiece(i,j).getPosition().y) * progress
+					});
+
+			//compress
+			pieces[i][j].setScale({
+					startSide.getPiece(i,j).getScale().x,
+					startSide.getPiece(i,j).getScale().y - (startSide.getPiece(i,j).getScale().y * progress)
+					});
+		}
+	}
+}
 
 void Side::growLeft(Side startSide, float progress)
 {
@@ -342,6 +362,25 @@ void Side::growUp(Side startSide, float progress)
 			pieces[i][j].setPosition({
 					pieces[i][j].getPosition().x,
 					((CUBE_BOTTOM_Y) + ((startSide.getPiece(i,j).getPosition().y) - (CUBE_BOTTOM_Y)) * progress)
+					});
+			//expand
+			pieces[i][j].setScale({
+					pieces[i][j].getScale().x,
+					progress
+					});
+		}
+	}
+}
+void Side::growDown(Side startSide, float progress)
+{
+	for(int i = 0; i < 3; i++)
+	{
+		for(int j = 0; j < 3; j++)
+		{
+			//translate
+			pieces[i][j].setPosition({
+					pieces[i][j].getPosition().x,
+					((CUBE_TOP_Y) + ((startSide.getPiece(i,j).getPosition().y) - (CUBE_TOP_Y)) * progress)
 					});
 			//expand
 			pieces[i][j].setScale({
