@@ -251,10 +251,14 @@ void Side::shrinkLeft(Side startSide, float progress)
 					});
 
 			//dim
+			Color startColor = startPiece.getFillColor();
+			uint8_t dimmedRed = startPiece.getFillColor().r * 0.25;
+			uint8_t dimmedGreen = startPiece.getFillColor().g * 0.25;
+			uint8_t dimmedBlue = startPiece.getFillColor().b * 0.25;
 			pieces[i][j].setFillColor({
-					uint8_t(startPiece.getFillColor().r + ((startPiece.getFillColor().r * 0.25) - startPiece.getFillColor().r) * progress),
-					uint8_t(startPiece.getFillColor().g + ((startPiece.getFillColor().g * 0.25) - startPiece.getFillColor().g) * progress),
-					uint8_t(startPiece.getFillColor().b + ((startPiece.getFillColor().b * 0.25) - startPiece.getFillColor().b) * progress)
+					uint8_t(startColor.r + (dimmedRed - startColor.r) * progress),
+					uint8_t(startColor.g + (dimmedGreen - startColor.g) * progress),
+					uint8_t(startColor.b + (dimmedBlue -startColor.b) * progress)
 					});
 		}
 	}
@@ -281,10 +285,14 @@ void Side::shrinkRight(Side startSide, float progress)
 					});
 
 			//dim
+			Color startColor = startPiece.getFillColor();
+			uint8_t dimmedRed = startPiece.getFillColor().r * 0.25;
+			uint8_t dimmedGreen = startPiece.getFillColor().g * 0.25;
+			uint8_t dimmedBlue = startPiece.getFillColor().b * 0.25;
 			pieces[i][j].setFillColor({
-					uint8_t(startPiece.getFillColor().r + ((startPiece.getFillColor().r * 0.25) - startPiece.getFillColor().r) * progress),
-					uint8_t(startPiece.getFillColor().g + ((startPiece.getFillColor().g * 0.25) - startPiece.getFillColor().g) * progress),
-					uint8_t(startPiece.getFillColor().b + ((startPiece.getFillColor().b * 0.25) - startPiece.getFillColor().b) * progress)
+					uint8_t(startColor.r + (dimmedRed - startColor.r) * progress),
+					uint8_t(startColor.g + (dimmedGreen - startColor.g) * progress),
+					uint8_t(startColor.b + (dimmedBlue -startColor.b) * progress)
 					});
 		}
 	}
@@ -310,10 +318,14 @@ void Side::shrinkUp(Side startSide, float progress)
 					});
 
 			//dim
+			Color startColor = startPiece.getFillColor();
+			uint8_t dimmedRed = startPiece.getFillColor().r * 0.25;
+			uint8_t dimmedGreen = startPiece.getFillColor().g * 0.25;
+			uint8_t dimmedBlue = startPiece.getFillColor().b * 0.25;
 			pieces[i][j].setFillColor({
-					uint8_t(startPiece.getFillColor().r + ((startPiece.getFillColor().r * 0.25) - startPiece.getFillColor().r) * progress),
-					uint8_t(startPiece.getFillColor().g + ((startPiece.getFillColor().g * 0.25) - startPiece.getFillColor().g) * progress),
-					uint8_t(startPiece.getFillColor().b + ((startPiece.getFillColor().b * 0.25) - startPiece.getFillColor().b) * progress)
+					uint8_t(startColor.r + (dimmedRed - startColor.r) * progress),
+					uint8_t(startColor.g + (dimmedGreen - startColor.g) * progress),
+					uint8_t(startColor.b + (dimmedBlue -startColor.b) * progress)
 					});
 		}
 	}
@@ -339,10 +351,14 @@ void Side::shrinkDown(Side startSide, float progress)
 					});
 
 			//dim
+			Color startColor = startPiece.getFillColor();
+			uint8_t dimmedRed = startPiece.getFillColor().r * 0.25;
+			uint8_t dimmedGreen = startPiece.getFillColor().g * 0.25;
+			uint8_t dimmedBlue = startPiece.getFillColor().b * 0.25;
 			pieces[i][j].setFillColor({
-					uint8_t(startPiece.getFillColor().r + ((startPiece.getFillColor().r * 0.25) - startPiece.getFillColor().r) * progress),
-					uint8_t(startPiece.getFillColor().g + ((startPiece.getFillColor().g * 0.25) - startPiece.getFillColor().g) * progress),
-					uint8_t(startPiece.getFillColor().b + ((startPiece.getFillColor().b * 0.25) - startPiece.getFillColor().b) * progress)
+					uint8_t(startColor.r + (dimmedRed - startColor.r) * progress),
+					uint8_t(startColor.g + (dimmedGreen - startColor.g) * progress),
+					uint8_t(startColor.b + (dimmedBlue -startColor.b) * progress)
 					});
 		}
 	}
@@ -369,10 +385,14 @@ void Side::growLeft(Side startSide, float progress)
 					});
 
 			//brighten
+			Color startColor = startPiece.getFillColor();
+			uint8_t dimmedRed = startPiece.getFillColor().r * 0.25;
+			uint8_t dimmedGreen = startPiece.getFillColor().g * 0.25;
+			uint8_t dimmedBlue = startPiece.getFillColor().b * 0.25;
 			pieces[i][j].setFillColor({
-					uint8_t(((startPiece.getFillColor().r * 0.25)) + (startPiece.getFillColor().r - (startPiece.getFillColor().r * 0.25)) * progress),
-					uint8_t(((startPiece.getFillColor().g * 0.25)) + (startPiece.getFillColor().g - (startPiece.getFillColor().g * 0.25)) * progress),
-					uint8_t(((startPiece.getFillColor().b * 0.25)) + (startPiece.getFillColor().b - (startPiece.getFillColor().b * 0.25)) * progress)
+					uint8_t((dimmedRed) + (startColor.r - (startColor.r * 0.25)) * progress),
+					uint8_t((dimmedGreen) + (startColor.g - (startColor.g * 0.25)) * progress),
+					uint8_t((dimmedBlue) + (startColor.b - (startColor.b * 0.25)) * progress)
 					});
 		}
 	}
@@ -399,10 +419,14 @@ void Side::growRight(Side startSide, float progress)
 					});
 
 			//brighten
+			Color startColor = startPiece.getFillColor();
+			uint8_t dimmedRed = startPiece.getFillColor().r * 0.25;
+			uint8_t dimmedGreen = startPiece.getFillColor().g * 0.25;
+			uint8_t dimmedBlue = startPiece.getFillColor().b * 0.25;
 			pieces[i][j].setFillColor({
-					uint8_t(((startPiece.getFillColor().r * 0.25)) + (startPiece.getFillColor().r - (startPiece.getFillColor().r * 0.25)) * progress),
-					uint8_t(((startPiece.getFillColor().g * 0.25)) + (startPiece.getFillColor().g - (startPiece.getFillColor().g * 0.25)) * progress),
-					uint8_t(((startPiece.getFillColor().b * 0.25)) + (startPiece.getFillColor().b - (startPiece.getFillColor().b * 0.25)) * progress)
+					uint8_t((dimmedRed) + (startColor.r - (startColor.r * 0.25)) * progress),
+					uint8_t((dimmedGreen) + (startColor.g - (startColor.g * 0.25)) * progress),
+					uint8_t((dimmedBlue) + (startColor.b - (startColor.b * 0.25)) * progress)
 					});
 		}
 	}
@@ -428,10 +452,14 @@ void Side::growUp(Side startSide, float progress)
 					});
 
 			//brighten
+			Color startColor = startPiece.getFillColor();
+			uint8_t dimmedRed = startPiece.getFillColor().r * 0.25;
+			uint8_t dimmedGreen = startPiece.getFillColor().g * 0.25;
+			uint8_t dimmedBlue = startPiece.getFillColor().b * 0.25;
 			pieces[i][j].setFillColor({
-					uint8_t(((startPiece.getFillColor().r * 0.25)) + (startPiece.getFillColor().r - (startPiece.getFillColor().r * 0.25)) * progress),
-					uint8_t(((startPiece.getFillColor().g * 0.25)) + (startPiece.getFillColor().g - (startPiece.getFillColor().g * 0.25)) * progress),
-					uint8_t(((startPiece.getFillColor().b * 0.25)) + (startPiece.getFillColor().b - (startPiece.getFillColor().b * 0.25)) * progress)
+					uint8_t((dimmedRed) + (startColor.r - (startColor.r * 0.25)) * progress),
+					uint8_t((dimmedGreen) + (startColor.g - (startColor.g * 0.25)) * progress),
+					uint8_t((dimmedBlue) + (startColor.b - (startColor.b * 0.25)) * progress)
 					});
 		}
 	}
@@ -457,10 +485,14 @@ void Side::growDown(Side startSide, float progress)
 					});
 
 			//brighten
+			Color startColor = startPiece.getFillColor();
+			uint8_t dimmedRed = startPiece.getFillColor().r * 0.25;
+			uint8_t dimmedGreen = startPiece.getFillColor().g * 0.25;
+			uint8_t dimmedBlue = startPiece.getFillColor().b * 0.25;
 			pieces[i][j].setFillColor({
-					uint8_t(((startPiece.getFillColor().r * 0.25)) + (startPiece.getFillColor().r - (startPiece.getFillColor().r * 0.25)) * progress),
-					uint8_t(((startPiece.getFillColor().g * 0.25)) + (startPiece.getFillColor().g - (startPiece.getFillColor().g * 0.25)) * progress),
-					uint8_t(((startPiece.getFillColor().b * 0.25)) + (startPiece.getFillColor().b - (startPiece.getFillColor().b * 0.25)) * progress)
+					uint8_t((dimmedRed) + (startColor.r - (startColor.r * 0.25)) * progress),
+					uint8_t((dimmedGreen) + (startColor.g - (startColor.g * 0.25)) * progress),
+					uint8_t((dimmedBlue) + (startColor.b - (startColor.b * 0.25)) * progress)
 					});
 		}
 	}
