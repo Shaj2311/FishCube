@@ -6,7 +6,7 @@ void drawMenu(RenderWindow& window, GameState& currState)
 		case START:
 			{
 				//Intro Text
-				Font titleFont("PressStart2P-Regular.ttf");
+				Font titleFont("assets/PressStart2P-Regular.ttf");
 				Text titleText(titleFont, "FISHCUBE", 150);
 
 				titleText.setFillColor(Color::White);
