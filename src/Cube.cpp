@@ -31,8 +31,6 @@ Cube::Cube()
 
 Color* Cube::initColors()
 {
-	srand(time(0));
-
 	Color* cubeColors = new Color[54];
 	Color colors[6] = 
 	{
