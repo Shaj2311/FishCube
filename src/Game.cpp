@@ -29,7 +29,7 @@ void Game::update(GameState& currState, GameState& nextState)
 			{
 				//check if cube is solved
 				if(cube->isSolved())
-					nextState = IDLE_SOLVED;
+					nextState = WIN;
 				break;
 			}
 		case IDLE_UNSOLVED_PAUSED:
@@ -80,6 +80,9 @@ void Game::update(GameState& currState, GameState& nextState)
 			}
 		case WIN:
 			{
+				//display win screen here
+				//switching directly to idle-solved for now
+				nextState = IDLE_SOLVED;
 				break;
 			}
 		case EXIT:
