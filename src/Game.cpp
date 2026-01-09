@@ -27,6 +27,9 @@ void Game::update(GameState& currState, GameState& nextState)
 			}
 		case IDLE_UNSOLVED:
 			{
+				//check if cube is solved
+				if(cube->isSolved())
+					nextState = IDLE_SOLVED;
 				break;
 			}
 		case IDLE_UNSOLVED_PAUSED:
@@ -60,6 +63,15 @@ void Game::update(GameState& currState, GameState& nextState)
 			}
 		case MOVING_SOLVED:
 			{
+				//if cube needs rotation, rotate it
+				if(player->getDirection() == LEFT_2)
+					cube->rotateLeft(currState, nextState);
+				if(player->getDirection() == RIGHT_2)
+					cube->rotateRight(currState, nextState);
+				if(player->getDirection() == DOWN_2)
+					cube->rotateDown(currState, nextState);
+				if(player->getDirection() == UP_2)
+					cube->rotateUp(currState, nextState);
 				break;
 			}
 		case MOVING_SOLVED_PAUSED:

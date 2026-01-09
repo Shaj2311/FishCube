@@ -30,5 +30,7 @@ public:
 	void growRight(Side startSide, float progress);
 	void growUp(Side startSide, float progress);
 	void growDown(Side startSide, float progress);
+
+	bool isSolved();
 };
 #endif

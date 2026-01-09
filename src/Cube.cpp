@@ -214,16 +214,16 @@ void Cube::draw(RenderWindow& window, GameState& currState, GameState& nextState
 				switch(dir)
 				{
 					case LEFT_2:
-						left->draw(window, currState, nextState);
-						break;
-					case RIGHT_2:
 						right->draw(window, currState, nextState);
 						break;
+					case RIGHT_2:
+						left->draw(window, currState, nextState);
+						break;
 					case UP_2:
-						up->draw(window, currState, nextState);
+						down->draw(window, currState, nextState);
 						break;
 					case DOWN_2:
-						down->draw(window, currState, nextState);
+						up->draw(window, currState, nextState);
 						break;
 				}
 				break;
@@ -437,4 +437,18 @@ void Cube::rotateDown(GameState& currState, GameState& nextState)
 		if(currState == MOVING_SOLVED)
 			nextState = IDLE_SOLVED;
 	}
+}
+
+bool Cube::isSolved()
+{
+	if(
+			front->isSolved() && 
+			right->isSolved() && 
+			left->isSolved() && 
+			up->isSolved() && 
+			down->isSolved() && 
+			back->isSolved()
+	  )
+		return true;
+	return false;
 }

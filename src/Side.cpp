@@ -497,3 +497,18 @@ void Side::growDown(Side startSide, float progress)
 		}
 	}
 }
+
+bool Side::isSolved()
+{
+	Color first = pieces[0][0].getFillColor();
+	for(int i = 0; i < 3; i++)
+	{
+		for(int j = 0; j < 3; j++)
+		{
+			if(pieces[i][j].getFillColor() != first)
+				return false;
+		}
+	}
+	return true;
+
+}

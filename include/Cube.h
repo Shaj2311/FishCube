@@ -33,5 +33,7 @@ public:
 	Side* getRightSide(){return right;}
 	Side* getUpSide(){return up;}
 	Side* getDownSide(){return down;}
+
+	bool isSolved();
 };
 #endif
