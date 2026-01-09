@@ -134,7 +134,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 				{
 					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
 					{
-						//WASD, Space for color swap
+						//WASD, Space for color swap, Escape to pause
 						if(keyPressed->code == Keyboard::Key::W || keyPressed->code == Keyboard::Key::Up)
 						{
 							//UP PRESSED
@@ -187,26 +187,55 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							swapColors();
 						}
+						if(keyPressed->code == Keyboard::Key::Escape)
+						{
+							//pause
+							nextState = IDLE_UNSOLVED_PAUSED;
+						}
 					}
 					break;
 				}
 			case IDLE_UNSOLVED_PAUSED:
 				{
+					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
+					{
+						if(keyPressed->code == Keyboard::Key::Enter)
+						{
+							//resume
+							nextState = IDLE_UNSOLVED;
+						}
+					}
 					break;
 				}
 			case MOVING_UNSOLVED:
 				{
+					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
+					{
+						if(keyPressed->code == Keyboard::Key::Escape)
+						{
+							//pause
+							nextState = MOVING_UNSOLVED_PAUSED;
+						}
+					}
 					break;
 				}
 			case MOVING_UNSOLVED_PAUSED:
 				{
+					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
+					{
+						if(keyPressed->code == Keyboard::Key::Enter)
+						{
+							//resume
+							nextState = MOVING_UNSOLVED;
+						}
+					}
 					break;
 				}
 			case IDLE_SOLVED:
 				{
 					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
 					{
-						//WASD
+						//WASD, Escape to pause
 						if(keyPressed->code == Keyboard::Key::W || keyPressed->code == Keyboard::Key::Up)
 						{
 							//UP PRESSED
@@ -254,19 +283,48 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 							//set next state
 							nextState = MOVING_SOLVED;
 						}
+						if(keyPressed->code == Keyboard::Key::Escape)
+						{
+							//pause
+							nextState = IDLE_SOLVED_PAUSED;
+						}
 					}
 					break;
 				}
 			case IDLE_SOLVED_PAUSED:
 				{
+					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
+					{
+						if(keyPressed->code == Keyboard::Key::Enter)
+						{
+							//resume
+							nextState = IDLE_SOLVED;
+						}
+					}
 					break;
 				}
 			case MOVING_SOLVED:
 				{
+					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
+					{
+						if(keyPressed->code == Keyboard::Key::Escape)
+						{
+							//pause
+							nextState = MOVING_SOLVED_PAUSED;
+						}
+					}
 					break;
 				}
 			case MOVING_SOLVED_PAUSED:
 				{
+					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
+					{
+						if(keyPressed->code == Keyboard::Key::Enter)
+						{
+							//resume
+							nextState = MOVING_SOLVED;
+						}
+					}
 					break;
 				}
 			case WIN:
