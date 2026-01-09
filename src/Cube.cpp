@@ -210,7 +210,7 @@ void Cube::rotateRight(GameState& currState, GameState& nextState)
 		//reset progress
 		progress = 0.f;
 
-		//reset sizes and scales
+		//reset sizes, scales, colors
 		*front = startingFrontSide;
 		*left = startingLeftSide;
 
@@ -256,7 +256,7 @@ void Cube::rotateLeft(GameState& currState, GameState& nextState)
 		//reset progress
 		progress = 0.f;
 
-		//reset sizes and scales
+		//reset sizes, scales, colors
 		*front = startingFrontSide;
 		*right = startingRightSide;
 
@@ -302,7 +302,7 @@ void Cube::rotateUp(GameState& currState, GameState& nextState)
 		//reset progress
 		progress = 0.f;
 
-		//reset sizes and scales
+		//reset sizes, scales, colors
 		*front = startingFrontSide;
 		*down = startingDownSide;
 
@@ -354,7 +354,7 @@ void Cube::rotateDown(GameState& currState, GameState& nextState)
 		//reset progress
 		progress = 0.f;
 
-		//reset sizes and scales
+		//reset sizes, scales, colors
 		*front = startingFrontSide;
 		*up = startingUpSide;
 
