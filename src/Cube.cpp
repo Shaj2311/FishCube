@@ -117,6 +117,7 @@ void Cube::draw(RenderWindow& window, GameState& currState, GameState& nextState
 		case MOVING_UNSOLVED:
 			{
 				front->draw(window, currState, nextState);
+				if(nextState == IDLE_UNSOLVED) break;
 				switch(dir)
 				{
 					case LEFT_2:
@@ -150,6 +151,7 @@ void Cube::draw(RenderWindow& window, GameState& currState, GameState& nextState
 		case MOVING_SOLVED:
 			{
 				front->draw(window, currState, nextState);
+				if(nextState == IDLE_SOLVED) break;
 				switch(dir)
 				{
 					case LEFT_2:
