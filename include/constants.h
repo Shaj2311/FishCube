@@ -6,7 +6,7 @@
 #define PIECE_SIZE 150
 #define PADDING 5
 
-#define MOVE_FACTOR 1.f/60
+#define MOVE_FACTOR 1.f/30
 
 #define CUBE_LEFT_X (WINDOW_WIDTH/2.f) - (3*PIECE_SIZE + 2*PADDING) / 2.f
 #define CUBE_RIGHT_X (WINDOW_WIDTH/2.f) + (3*PIECE_SIZE + 2*PADDING) / 2.f
