@@ -7,6 +7,7 @@ Player::Player()
 	fishSprite = new Sprite(fishTexture);
 
 
+	//set origin
 	fishSprite->setOrigin(
 			{
 			fishTexture.getSize().x / 2.f,
@@ -14,6 +15,7 @@ Player::Player()
 			}
 			);
 
+	//set scale
 	fishSprite->setScale(
 			{
 			(PIECE_SIZE * 0.65f) / fishTexture.getSize().x,
@@ -21,13 +23,17 @@ Player::Player()
 			}
 			);
 
+	//initialize position
 	fishSprite->setPosition({WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f});
 
-	fishSprite->setColor(Color::Red);
-
+	//initialize row and column
 	currentRow = currentCol = 1;
 
+	//initialize facing direction
 	facingRight = true;
+
+	Color colors[5] = {Color::Red, Color(255, 165, 0), Color::Blue, Color::Green, Color::Yellow};
+	fishSprite->setColor(colors[rand() % 5]);
 }
 
 void Player::update(GameState& currState, GameState& nextState)
