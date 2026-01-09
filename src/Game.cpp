@@ -123,10 +123,11 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						if(keyPressed->code == Keyboard::Key::W || keyPressed->code == Keyboard::Key::Up)
 						{
 							//UP PRESSED
-							if(player->getRow() == 0)
+							if(player->getRow() == 0 && isValidMove(DOWN_2))
 								player->setDirection(DOWN_2);
-							else
+							else if(player->getRow() != 0 && isValidMove(UP_1))
 								player->setDirection(UP_1);
+							else break;
 
 							//set next state
 							nextState = MOVING_UNSOLVED;
@@ -134,10 +135,11 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						if(keyPressed->code == Keyboard::Key::S || keyPressed->code == Keyboard::Key::Down)
 						{
 							//DOWN PRESSED
-							if(player->getRow() == 2)
+							if(player->getRow() == 2 && isValidMove(UP_2))
 								player->setDirection(UP_2);
-							else
+							else if(player->getRow() != 2 && isValidMove(DOWN_1))
 								player->setDirection(DOWN_1);
+							else break;
 
 							//set next state
 							nextState = MOVING_UNSOLVED;
@@ -145,10 +147,11 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						if(keyPressed->code == Keyboard::Key::A || keyPressed->code == Keyboard::Key::Left)
 						{
 							//LEFT PRESSED
-							if(player->getCol() == 0)
+							if(player->getCol() == 0 && isValidMove(RIGHT_2))
 								player->setDirection(RIGHT_2);
-							else
+							else if(player->getCol() != 0 && isValidMove(LEFT_1))
 								player->setDirection(LEFT_1);
+							else break;
 
 							//set next state
 							nextState = MOVING_UNSOLVED;
@@ -156,10 +159,11 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						if(keyPressed->code == Keyboard::Key::D || keyPressed->code == Keyboard::Key::Right)
 						{
 							//RIGHT PRESSED
-							if(player->getCol() == 2)
+							if(player->getCol() == 2 && isValidMove(LEFT_2))
 								player->setDirection(LEFT_2);
-							else
+							else if(player->getCol() != 2 && isValidMove(RIGHT_1))
 								player->setDirection(RIGHT_1);
+							else break;
 
 							//set next state
 							nextState = MOVING_UNSOLVED;
@@ -270,4 +274,54 @@ void Game::swapColors()
 
 	player->setColor(currentPiece.getFillColor());
 	currentPiece.setFillColor(playerColor);
+}
+
+bool Game::isValidMove(Direction dir)
+{
+	Side* targetSide;
+	RectangleShape targetPiece;
+	int currRow = player->getRow();
+	int currCol = player->getCol();
+	Color playerColor = player->getColor();
+
+	switch(dir)
+	{
+		case UP_1:
+			targetSide = cube->getFrontSide();
+			targetPiece = targetSide->getPiece(currRow-1, currCol);
+			break;
+		case DOWN_1:
+			targetSide = cube->getFrontSide();
+			targetPiece = targetSide->getPiece(currRow+1, currCol);
+			break;
+		case LEFT_1:
+			targetSide = cube->getFrontSide();
+			targetPiece = targetSide->getPiece(currRow, currCol-1);
+			break;
+		case RIGHT_1:
+			targetSide = cube->getFrontSide();
+			targetPiece = targetSide->getPiece(currRow, currCol+1);
+			break;
+
+		case UP_2:
+			targetSide = cube->getDownSide();
+			targetPiece = targetSide->getPiece(0, currCol);
+			break;
+		case DOWN_2:
+			targetSide = cube->getUpSide();
+			targetPiece = targetSide->getPiece(2, currCol);
+			break;
+		case LEFT_2:
+			targetSide = cube->getRightSide();
+			targetPiece = targetSide->getPiece(currRow, 0);
+			break;
+		case RIGHT_2:
+			targetSide = cube->getLeftSide();
+			targetPiece = targetSide->getPiece(currRow, 2);
+			break;
+	}
+
+	if(targetPiece.getFillColor() == playerColor)
+		return false;
+	return true;
 }

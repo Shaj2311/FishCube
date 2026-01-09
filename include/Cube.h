@@ -28,5 +28,10 @@ public:
 	void rotateDown(GameState& currState, GameState& nextState);
 
 	Side* getFrontSide(){return front;}
+	Side* getBackSide(){return back;}
+	Side* getLeftSide(){return left;}
+	Side* getRightSide(){return right;}
+	Side* getUpSide(){return up;}
+	Side* getDownSide(){return down;}
 };
 #endif

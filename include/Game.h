@@ -20,5 +20,7 @@ public:
 	void draw(GameState& currState, GameState& nextState);
 	
 	RenderWindow& getWindow(){return window;}
+
+	bool isValidMove(Direction dir);
 };
 #endif
