@@ -13,9 +13,8 @@ Cube::Cube()
 	right = new Side();
 	left = new Side();
 
-	//TODO fix center colors, keeping em random for now
 	//assign colors
-	Side* cube[6] = {front, back, up, down, left, right};
+	Side* cube[6] = {front, back, up, down, right, left};
 	for(int i = 0; i < 6; i++)
 	{
 		for(int j = 0; j < 3; j++)
@@ -54,8 +53,15 @@ Color* Cube::initColors()
 	//randomize with Fisher Yates
 	for(int i = 53; i > 0; i--)
 	{
+
 		//get random value between 0 and i
 		int swapIndex = rand() % (i+1);
+
+		//skip centers
+		if(i%9 == 4)
+			continue;
+		if(swapIndex%9 == 4)
+			continue;
 
 		//swap index i with random index
 		Color temp = cubeColors[i];
