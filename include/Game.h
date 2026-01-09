@@ -3,6 +3,7 @@
 #include "Cube.h"
 #include "State.h"
 #include "Player.h"
+#include "Menu.h"
 class Game
 {
 	RenderWindow window;

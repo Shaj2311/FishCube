@@ -99,6 +99,7 @@ void Game::update(GameState& currState, GameState& nextState)
 void Game::draw(GameState& currState, GameState& nextState)
 {
 	window.clear();
+	drawMenu(window, currState);
 	cube->draw(window, currState, nextState, player->getDirection());
 	player->draw(window, currState, nextState);
 	window.display();
