@@ -289,10 +289,9 @@ void Cube::rotateUp(GameState& currState, GameState& nextState)
 		startingDownSide = *down;
 	}
 
-	//NO ANIMATIONS FOR NOW
-	////interpolate
-	//front->shrinkLeft(startingFrontSide, progress);
-	//right->growLeft(startingRightSide, progress);
+	//interpolate
+	front->shrinkUp(startingFrontSide, progress);
+	down->growUp(startingDownSide, progress);
 
 	//update progress
 	progress += MOVE_FACTOR;
@@ -302,6 +301,10 @@ void Cube::rotateUp(GameState& currState, GameState& nextState)
 	{
 		//reset progress
 		progress = 0.f;
+
+		//reset sizes and scales
+		*front = startingFrontSide;
+		*down = startingDownSide;
 
 		//update sides
 		Side* temp = front;
@@ -351,6 +354,10 @@ void Cube::rotateDown(GameState& currState, GameState& nextState)
 	{
 		//reset progress
 		progress = 0.f;
+
+		//reset sizes and scales
+		*front = startingFrontSide;
+		*up = startingUpSide;
 
 		//update sides
 		Side* temp = front;
