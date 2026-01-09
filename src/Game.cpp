@@ -36,7 +36,6 @@ void Game::update(GameState& currState, GameState& nextState)
 		case MOVING_UNSOLVED:
 			{
 				//if cube needs rotation, rotate it
-				//FIXME handling only left cube rotation for now
 				if(player->getDirection() == LEFT_2)
 					cube->rotateLeft(currState, nextState);
 				if(player->getDirection() == RIGHT_2)

@@ -2,6 +2,9 @@
 
 Cube::Cube()
 {
+	//initialize colors
+	Color* colorsArr = initColors();
+
 	//initialize sides
 	front = new Side();
 	back = new Side();
@@ -9,6 +12,58 @@ Cube::Cube()
 	down = new Side();
 	right = new Side();
 	left = new Side();
+
+	//TODO fix center colors, keeping em random for now
+	//assign colors
+	Side* cube[6] = {front, back, up, down, left, right};
+	for(int i = 0; i < 6; i++)
+	{
+		for(int j = 0; j < 3; j++)
+		{
+			for(int k = 0; k < 3; k++)
+			{
+				cube[i]->
+					getPiece(j,k).
+					setFillColor(colorsArr[(9*i) + (3*j + k)]);
+			}
+		}
+	}
+}
+
+Color* Cube::initColors()
+{
+	srand(time(0));
+
+	Color* cubeColors = new Color[54];
+	Color colors[6] = 
+	{
+		Color::White, Color::Yellow,
+		Color::Blue, Color::Green,
+		Color::Red, Color(255, 165, 0)
+	};
+
+	//initialize colors array
+	for(int i = 0; i < 6; i++)
+	{
+		for(int j = 0; j < 9; j++)
+		{
+			cubeColors[(9*i) + j] = colors[i];
+		}
+	}
+
+	//randomize with Fisher Yates
+	for(int i = 53; i > 0; i--)
+	{
+		//get random value between 0 and i
+		int swapIndex = rand() % (i+1);
+
+		//swap index i with random index
+		Color temp = cubeColors[i];
+		cubeColors[i] = cubeColors[swapIndex];
+		cubeColors[swapIndex] = temp;
+	}
+
+	return cubeColors;
 }
 
 void Cube::update(GameState& currState, GameState& nextState)

@@ -1,6 +1,7 @@
 #ifndef CUBE_H
 #define CUBE_H
 #include <SFML/Graphics.hpp>
+#include <cstdlib>
 #include "Side.h"
 #include "State.h"
 #include "Direction.h"
@@ -13,6 +14,8 @@ class Cube
 	Side* down;
 	Side* right;
 	Side* left;
+
+	Color* initColors();
 
 public:
 	Cube();
