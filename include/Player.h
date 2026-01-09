@@ -15,6 +15,7 @@ class Player
 	unsigned int currentCol;
 
 	Direction direction;
+	bool facingRight;
 
 	void move(GameState& currState, GameState& nextState);
 public:

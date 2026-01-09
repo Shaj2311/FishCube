@@ -26,6 +26,8 @@ Player::Player()
 	fishSprite->setColor(Color::Red);
 
 	currentRow = currentCol = 1;
+
+	facingRight = true;
 }
 
 void Player::update(GameState& currState, GameState& nextState)
@@ -161,18 +163,46 @@ void Player::move(GameState& currState, GameState& nextState)
 			case LEFT_1:
 				targetPos.x -= PIECE_SIZE;
 				currentCol -= 1;
+
+				//flip sprite if needed
+				if(facingRight)
+				{
+					facingRight = false;
+					fishSprite->scale({-1, 1});
+				}
 				break;
 			case LEFT_2:
 				targetPos.x -= PIECE_SIZE*2;
 				currentCol -= 2;
+
+				//flip sprite if needed
+				if(!facingRight)
+				{
+					facingRight = true;
+					fishSprite->scale({-1, 1});
+				}
 				break;
 			case RIGHT_1:
 				targetPos.x += PIECE_SIZE;
 				currentCol += 1;
+
+				//flip sprite if needed
+				if(!facingRight)
+				{
+					facingRight = true;
+					fishSprite->scale({-1, 1});
+				}
 				break;
 			case RIGHT_2:
 				targetPos.x += PIECE_SIZE*2;
 				currentCol += 2;
+
+				//flip sprite if needed
+				if(facingRight)
+				{
+					facingRight = false;
+					fishSprite->scale({-1, 1});
+				}
 				break;
 			case UP_1:
 				targetPos.y -= PIECE_SIZE;
