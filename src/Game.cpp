@@ -55,6 +55,8 @@ void Game::update(GameState& currState, GameState& nextState)
 			}
 		case IDLE_SOLVED:
 			{
+				//set player color
+				player->setColor(Color(0,0,0,100));
 				break;
 			}
 		case IDLE_SOLVED_PAUSED:
