@@ -150,6 +150,10 @@ void Cube::update(GameState& currState, GameState& nextState)
 			{
 				break;
 			}
+		case EXIT_CONFIRM:
+			{
+
+			}
 		case EXIT:
 			{
 				break;
@@ -237,6 +241,10 @@ void Cube::draw(RenderWindow& window, GameState& currState, GameState& nextState
 				break;
 			}
 		case WIN:
+			{
+				break;
+			}
+		case EXIT_CONFIRM:
 			{
 				break;
 			}
