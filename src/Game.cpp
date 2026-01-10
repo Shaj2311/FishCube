@@ -86,6 +86,10 @@ void Game::update(GameState& currState, GameState& nextState)
 			{
 				break;
 			}
+		case EXIT_CONFIRM:
+			{
+				break;
+			}
 		case EXIT:
 			{
 				break;
@@ -120,10 +124,15 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 				{
 					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
 					{
-						//if enter pressed, start game
+						//start game
 						if(keyPressed->code == Keyboard::Key::Enter)
 						{
 							nextState = GAME_START;
+						}
+						//exit
+						if(keyPressed->code == Keyboard::Key::Q)
+						{
+							nextState = EXIT_CONFIRM;
 						}
 					}
 					break;
@@ -384,6 +393,23 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//restart
 							nextState = GAME_START;
+						}
+					}
+					break;
+				}
+			case EXIT_CONFIRM:
+				{
+					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
+					{
+						//exit
+						if(keyPressed->code == Keyboard::Key::Y)
+						{
+							nextState = EXIT;
+						}
+						//back to start
+						if(keyPressed->code == Keyboard::Key::N)
+						{
+							nextState = START;
 						}
 					}
 					break;

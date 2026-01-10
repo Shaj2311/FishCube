@@ -24,6 +24,7 @@ enum GameState
 	MOVING_SOLVED_PAUSED,
 
 	WIN,
+	EXIT_CONFIRM,
 	EXIT
 };
 

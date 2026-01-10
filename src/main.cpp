@@ -20,6 +20,10 @@ int main()
 		game.update(currState, nextState);
 		game.draw(currState, nextState);
 
+		//exit
+		if(nextState == EXIT) return 0;
+
+		//switch to next state
 		sm.switchToState(nextState);
 	}
 }
