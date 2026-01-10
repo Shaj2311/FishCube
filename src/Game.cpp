@@ -201,10 +201,20 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 				{
 					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
 					{
-						if(keyPressed->code == Keyboard::Key::Enter)
+						if(keyPressed->code == Keyboard::Key::Escape)
 						{
 							//resume
 							nextState = IDLE_UNSOLVED;
+						}
+						if(keyPressed->code == Keyboard::Key::Q)
+						{
+							//go to start menu
+							nextState = START;
+						}
+						if(keyPressed->code == Keyboard::Key::R)
+						{
+							//restart
+							nextState = GAME_START;
 						}
 					}
 					break;
@@ -225,10 +235,20 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 				{
 					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
 					{
-						if(keyPressed->code == Keyboard::Key::Enter)
+						if(keyPressed->code == Keyboard::Key::Escape)
 						{
 							//resume
 							nextState = MOVING_UNSOLVED;
+						}
+						if(keyPressed->code == Keyboard::Key::Q)
+						{
+							//go to start menu
+							nextState = START;
+						}
+						if(keyPressed->code == Keyboard::Key::R)
+						{
+							//restart
+							nextState = GAME_START;
 						}
 					}
 					break;
@@ -294,10 +314,20 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 				{
 					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
 					{
-						if(keyPressed->code == Keyboard::Key::Enter)
+						if(keyPressed->code == Keyboard::Key::Escape)
 						{
 							//resume
 							nextState = IDLE_SOLVED;
+						}
+						if(keyPressed->code == Keyboard::Key::Q)
+						{
+							//go to start menu
+							nextState = START;
+						}
+						if(keyPressed->code == Keyboard::Key::R)
+						{
+							//restart
+							nextState = GAME_START;
 						}
 					}
 					break;
@@ -318,10 +348,20 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 				{
 					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
 					{
-						if(keyPressed->code == Keyboard::Key::Enter)
+						if(keyPressed->code == Keyboard::Key::Escape)
 						{
 							//resume
 							nextState = MOVING_SOLVED;
+						}
+						if(keyPressed->code == Keyboard::Key::Q)
+						{
+							//go to start menu
+							nextState = START;
+						}
+						if(keyPressed->code == Keyboard::Key::R)
+						{
+							//restart
+							nextState = GAME_START;
 						}
 					}
 					break;
@@ -335,7 +375,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 							//explore
 							nextState = IDLE_SOLVED;
 						}
-						if(keyPressed->code == Keyboard::Key::Escape)
+						if(keyPressed->code == Keyboard::Key::Q)
 						{
 							//go to start menu
 							nextState = START;

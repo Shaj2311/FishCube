@@ -13,6 +13,10 @@ Cube::Cube()
 	right = new Side();
 	left = new Side();
 
+	progress = 0.f;
+	startingFrontSide = *front;
+	startingTargetSide = *right;
+
 	//assign colors
 	Side* cube[6] = {front, back, up, down, right, left};
 	for(int i = 0; i < 6; i++)
@@ -245,20 +249,16 @@ void Cube::draw(RenderWindow& window, GameState& currState, GameState& nextState
 
 void Cube::rotateRight(GameState& currState, GameState& nextState)
 {
-	static float progress = 0.f;
-	static Side startingFrontSide = *front;
-	static Side startingLeftSide = *right;
-
 	if(progress == 0.f)
 	{
 		//mark initial state of sides
 		startingFrontSide = *front;
-		startingLeftSide = *left;
+		startingTargetSide = *left;
 	}
 
 	//interpolate
 	front->shrinkRight(startingFrontSide, progress);
-	left->growRight(startingLeftSide, progress);
+	left->growRight(startingTargetSide, progress);
 
 	//update progress
 	progress += MOVE_FACTOR;
@@ -271,7 +271,7 @@ void Cube::rotateRight(GameState& currState, GameState& nextState)
 
 		//reset sizes, scales, colors
 		*front = startingFrontSide;
-		*left = startingLeftSide;
+		*left = startingTargetSide;
 
 		//update sides
 		Side* temp = front;
@@ -291,20 +291,16 @@ void Cube::rotateRight(GameState& currState, GameState& nextState)
 }
 void Cube::rotateLeft(GameState& currState, GameState& nextState)
 {
-	static float progress = 0.f;
-	static Side startingFrontSide = *front;
-	static Side startingRightSide = *right;
-
 	if(progress == 0.f)
 	{
 		//mark initial state of sides
 		startingFrontSide = *front;
-		startingRightSide = *right;
+		startingTargetSide = *right;
 	}
 
 	//interpolate
 	front->shrinkLeft(startingFrontSide, progress);
-	right->growLeft(startingRightSide, progress);
+	right->growLeft(startingTargetSide, progress);
 
 	//update progress
 	progress += MOVE_FACTOR;
@@ -317,7 +313,7 @@ void Cube::rotateLeft(GameState& currState, GameState& nextState)
 
 		//reset sizes, scales, colors
 		*front = startingFrontSide;
-		*right = startingRightSide;
+		*right = startingTargetSide;
 
 		//update sides
 		Side* temp = front;
@@ -337,20 +333,16 @@ void Cube::rotateLeft(GameState& currState, GameState& nextState)
 }
 void Cube::rotateUp(GameState& currState, GameState& nextState)
 {
-	static float progress = 0.f;
-	static Side startingFrontSide = *front;
-	static Side startingDownSide = *down;
-
 	if(progress == 0.f)
 	{
 		//mark initial state of sides
 		startingFrontSide = *front;
-		startingDownSide = *down;
+		startingTargetSide = *down;
 	}
 
 	//interpolate
 	front->shrinkUp(startingFrontSide, progress);
-	down->growUp(startingDownSide, progress);
+	down->growUp(startingTargetSide, progress);
 
 	//update progress
 	progress += MOVE_FACTOR;
@@ -363,7 +355,7 @@ void Cube::rotateUp(GameState& currState, GameState& nextState)
 
 		//reset sizes, scales, colors
 		*front = startingFrontSide;
-		*down = startingDownSide;
+		*down = startingTargetSide;
 
 		//update sides
 		Side* temp = front;
@@ -389,20 +381,16 @@ void Cube::rotateUp(GameState& currState, GameState& nextState)
 }
 void Cube::rotateDown(GameState& currState, GameState& nextState)
 {
-	static float progress = 0.f;
-	static Side startingFrontSide = *front;
-	static Side startingUpSide = *up;
-
 	if(progress == 0.f)
 	{
 		//mark initial state of sides
 		startingFrontSide = *front;
-		startingUpSide = *up;
+		startingTargetSide = *up;
 	}
 
 	//interpolate
 	front->shrinkDown(startingFrontSide, progress);
-	up->growDown(startingUpSide, progress);
+	up->growDown(startingTargetSide, progress);
 
 	//update progress
 	progress += MOVE_FACTOR;
@@ -415,7 +403,7 @@ void Cube::rotateDown(GameState& currState, GameState& nextState)
 
 		//reset sizes, scales, colors
 		*front = startingFrontSide;
-		*up = startingUpSide;
+		*up = startingTargetSide;
 
 		//update sides
 		Side* temp = front;

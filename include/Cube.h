@@ -14,6 +14,11 @@ class Cube
 	Side* right;
 	Side* left;
 
+	//animation interpolation variables
+	float progress;
+	Side startingFrontSide;
+	Side startingTargetSide;
+
 	Color* initColors();
 
 public:

@@ -17,6 +17,11 @@ class Player
 	Direction direction;
 	bool facingRight;
 
+	//Animation interpolation variables
+	float moveProgress;
+	Vector2f startingPos;
+	Vector2f targetPos;
+
 	void move(GameState& currState, GameState& nextState);
 public:
 	Player();

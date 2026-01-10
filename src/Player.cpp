@@ -34,6 +34,10 @@ Player::Player()
 
 	Color colors[5] = {Color::Red, Color(255, 165, 0), Color::Blue, Color::Green, Color::Yellow};
 	fishSprite->setColor(colors[rand() % 5]);
+
+	moveProgress = 0.f;
+	startingPos = fishSprite->getPosition();
+	targetPos = startingPos;
 }
 
 void Player::update(GameState& currState, GameState& nextState)
@@ -157,13 +161,9 @@ void Player::draw(RenderWindow& window, GameState& currState, GameState& nextSta
 
 void Player::move(GameState& currState, GameState& nextState)
 {
-	static float moveProgress = 0.f;
-	static Vector2f startingPos = fishSprite->getPosition();
-
-	//compute target position and update current row/col
-	static Vector2f targetPos = startingPos;
 	if(moveProgress == 0.f) //compute only on first move frame
 	{
+		//compute starting and target positions, update current row, col
 		startingPos = fishSprite->getPosition();
 		targetPos = startingPos;
 
@@ -251,7 +251,7 @@ void Player::move(GameState& currState, GameState& nextState)
 		if(currState == MOVING_SOLVED)
 			nextState = IDLE_SOLVED;
 
-		//reset static vars
+		//reset interpolation variables
 		moveProgress = 0.f;
 		startingPos = fishSprite->getPosition();
 	}
