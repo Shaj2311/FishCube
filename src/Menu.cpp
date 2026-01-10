@@ -6,11 +6,11 @@ void drawMenu(RenderWindow& window, GameState& currState)
 		case START:
 			{
 				//Intro Text
-				Font titleFont("assets/PressStart2P-Regular.ttf");
+				Font titleFont("assets/fonts/PressStart2P-Regular.ttf");
 				Text titleText(titleFont, "FISHCUBE", 150);
 
 				//other text
-				Font otherFont("assets/Roboto-Black.ttf");
+				Font otherFont("assets/fonts/Roboto-Black.ttf");
 				Text startText(otherFont, "PRESS [ENTER] TO START", 50);
 				Text quitText(otherFont, "PRESS [Q] TO QUIT", 50);
 
@@ -59,11 +59,11 @@ void drawMenu(RenderWindow& window, GameState& currState)
 		case MOVING_SOLVED_PAUSED:
 			{
 				//Intro Text
-				Font titleFont("assets/PressStart2P-Regular.ttf");
+				Font titleFont("assets/fonts/PressStart2P-Regular.ttf");
 				Text titleText(titleFont, "PAUSED", 150);
 
 				//other text
-				Font otherFont("assets/Roboto-Black.ttf");
+				Font otherFont("assets/fonts/Roboto-Black.ttf");
 				Text resumeText(otherFont, "PRESS [ESC] TO RESUME", 50);
 				Text returnText(otherFont, "PRESS [Q] TO RETURN TO MAIN MENU", 50);
 				Text restartText(otherFont, "PRESS [R] TO RESTART", 50);
@@ -119,11 +119,11 @@ void drawMenu(RenderWindow& window, GameState& currState)
 			{
 
 				//Intro Text
-				Font titleFont("assets/PressStart2P-Regular.ttf");
+				Font titleFont("assets/fonts/PressStart2P-Regular.ttf");
 				Text titleText(titleFont, "YOU WIN", 150);
 
 				//other text
-				Font otherFont("assets/Roboto-Black.ttf");
+				Font otherFont("assets/fonts/Roboto-Black.ttf");
 				Text resumeText(otherFont, "PRESS [ENTER] TO ENTER EXPLORE MODE", 50);
 				Text returnText(otherFont, "PRESS [Q] TO RETURN TO MAIN MENU", 50);
 				Text restartText(otherFont, "PRESS [R] TO RESTART", 50);
@@ -178,11 +178,11 @@ void drawMenu(RenderWindow& window, GameState& currState)
 		case EXIT_CONFIRM:
 			{
 				//Intro Text
-				Font titleFont("assets/PressStart2P-Regular.ttf");
+				Font titleFont("assets/fonts/PressStart2P-Regular.ttf");
 				Text titleText(titleFont, "FISHCUBE", 150);
 
 				//other text
-				Font otherFont("assets/Roboto-Black.ttf");
+				Font otherFont("assets/fonts/Roboto-Black.ttf");
 				Text confirmText(otherFont, "ARE YOU SURE YOU WANT TO QUIT? [Y/N]", 50);
 
 				titleText.setFillColor(Color::White);

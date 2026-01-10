@@ -3,7 +3,7 @@
 Player::Player()
 {
 
-	if(!fishTexture.loadFromFile("assets/fish.png")){exit(1);}
+	if(!fishTexture.loadFromFile("assets/images/fish.png")){exit(1);}
 	fishSprite = new Sprite(fishTexture);
 
 

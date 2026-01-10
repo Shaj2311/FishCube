@@ -52,24 +52,27 @@ Color* Cube::initColors()
 		}
 	}
 
-	//randomize with Fisher Yates
-	for(int i = 53; i > 0; i--)
-	{
+	////randomize with Fisher Yates
+	//for(int i = 53; i > 0; i--)
+	//{
 
-		//get random value between 0 and i
-		int swapIndex = rand() % (i+1);
+	//	//get random value between 0 and i
+	//	int swapIndex = rand() % (i+1);
 
-		//skip centers
-		if(i%9 == 4)
-			continue;
-		if(swapIndex%9 == 4)
-			continue;
+	//	//skip centers
+	//	if(i%9 == 4)
+	//		continue;
+	//	if(swapIndex%9 == 4)
+	//		continue;
 
-		//swap index i with random index
-		Color temp = cubeColors[i];
-		cubeColors[i] = cubeColors[swapIndex];
-		cubeColors[swapIndex] = temp;
-	}
+	//	//swap index i with random index
+	//	Color temp = cubeColors[i];
+	//	cubeColors[i] = cubeColors[swapIndex];
+	//	cubeColors[swapIndex] = temp;
+	//}
+	Color temp = cubeColors[0];
+	cubeColors[0] = cubeColors[10];
+	cubeColors[10] = temp;
 
 	return cubeColors;
 }
