@@ -247,9 +247,6 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 
 							//set next state
 							nextState = MOVING_SOLVED;
-
-							//set player color
-							player->setColor(Color(0,0,0,100));
 						}
 						if(keyPressed->code == Keyboard::Key::S || keyPressed->code == Keyboard::Key::Down)
 						{
