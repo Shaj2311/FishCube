@@ -31,7 +31,10 @@ void Game::update(GameState& currState, GameState& nextState)
 			{
 				//check if cube is solved
 				if(cube->isSolved())
+				{
 					nextState = WIN;
+					clock.stop();
+				}
 				break;
 			}
 		case IDLE_UNSOLVED_PAUSED:
@@ -202,6 +205,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//pause
 							nextState = IDLE_UNSOLVED_PAUSED;
+							clock.stop();
 						}
 					}
 					break;
@@ -214,6 +218,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//resume
 							nextState = IDLE_UNSOLVED;
+							clock.start();
 						}
 						if(keyPressed->code == Keyboard::Key::Q)
 						{
@@ -236,6 +241,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//pause
 							nextState = MOVING_UNSOLVED_PAUSED;
+							clock.stop();
 						}
 					}
 					break;
@@ -248,6 +254,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//resume
 							nextState = MOVING_UNSOLVED;
+							clock.start();
 						}
 						if(keyPressed->code == Keyboard::Key::Q)
 						{
@@ -315,6 +322,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//pause
 							nextState = IDLE_SOLVED_PAUSED;
+							clock.stop();
 						}
 					}
 					break;
@@ -327,6 +335,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//resume
 							nextState = IDLE_SOLVED;
+							clock.start();
 						}
 						if(keyPressed->code == Keyboard::Key::Q)
 						{
@@ -349,6 +358,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//pause
 							nextState = MOVING_SOLVED_PAUSED;
+							clock.stop();
 						}
 					}
 					break;
@@ -361,6 +371,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//resume
 							nextState = MOVING_SOLVED;
+							clock.start();
 						}
 						if(keyPressed->code == Keyboard::Key::Q)
 						{
@@ -383,6 +394,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//explore
 							nextState = IDLE_SOLVED;
+							clock.start();
 						}
 						if(keyPressed->code == Keyboard::Key::Q)
 						{

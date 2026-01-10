@@ -9,6 +9,7 @@ class Game
 	RenderWindow window;
 	Cube* cube;
 	Player* player;
+	Clock clock;
 
 	void swapColors();
 
