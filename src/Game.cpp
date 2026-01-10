@@ -2,6 +2,8 @@
 
 Game::Game()
 {
+	cube = new Cube();
+	player = new Player();
 	window.create(VideoMode({WINDOW_WIDTH, WINDOW_HEIGHT}), "FishCube", State::Fullscreen);
 	window.setFramerateLimit(60);
 }
@@ -82,9 +84,6 @@ void Game::update(GameState& currState, GameState& nextState)
 			}
 		case WIN:
 			{
-				//display win screen here
-				//switching directly to idle-solved for now
-				nextState = IDLE_SOLVED;
 				break;
 			}
 		case EXIT:
@@ -329,6 +328,24 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 				}
 			case WIN:
 				{
+					if(const auto keyPressed = event->getIf<Event::KeyPressed>())
+					{
+						if(keyPressed->code == Keyboard::Key::Enter)
+						{
+							//explore
+							nextState = IDLE_SOLVED;
+						}
+						if(keyPressed->code == Keyboard::Key::Escape)
+						{
+							//go to start menu
+							nextState = START;
+						}
+						if(keyPressed->code == Keyboard::Key::R)
+						{
+							//restart
+							nextState = GAME_START;
+						}
+					}
 					break;
 				}
 			case EXIT:

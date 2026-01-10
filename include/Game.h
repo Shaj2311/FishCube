@@ -7,7 +7,6 @@
 class Game
 {
 	RenderWindow window;
-	//only one side for now
 	Cube* cube;
 	Player* player;
 

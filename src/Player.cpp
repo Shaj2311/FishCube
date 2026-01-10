@@ -164,6 +164,9 @@ void Player::move(GameState& currState, GameState& nextState)
 	static Vector2f targetPos = startingPos;
 	if(moveProgress == 0.f) //compute only on first move frame
 	{
+		startingPos = fishSprite->getPosition();
+		targetPos = startingPos;
+
 		switch(direction)
 		{
 			case LEFT_1:
