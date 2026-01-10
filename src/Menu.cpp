@@ -9,15 +9,35 @@ void drawMenu(RenderWindow& window, GameState& currState)
 				Font titleFont("assets/PressStart2P-Regular.ttf");
 				Text titleText(titleFont, "FISHCUBE", 150);
 
-				titleText.setFillColor(Color::White);
+				//other text
+				Font otherFont("assets/Roboto-Black.ttf");
+				Text startText(otherFont, "PRESS [ENTER] TO START", 50);
+				Text quitText(otherFont, "PRESS [Q] TO QUIT", 50);
 
-				FloatRect bounds = titleText.getLocalBounds();
+				titleText.setFillColor(Color::White);
+				startText.setFillColor(Color::White);
+				quitText.setFillColor(Color::White);
+
+				FloatRect titleBounds = titleText.getLocalBounds();
+				FloatRect startBounds = startText.getLocalBounds();
+				FloatRect quitBounds = quitText.getLocalBounds();
+
 				titleText.setOrigin({
-						(bounds.position.x + bounds.size.x) / 2,
-						(bounds.position.y + bounds.size.y) / 2
+						(titleBounds.position.x + titleBounds.size.x) / 2,
+						(titleBounds.position.y + titleBounds.size.y) / 2
+						});
+				startText.setOrigin({
+						(startBounds.position.x + startBounds.size.x) / 2,
+						(startBounds.position.y + startBounds.size.y) / 2
+						});
+				quitText.setOrigin({
+						(quitBounds.position.x + quitBounds.size.x) / 2,
+						(quitBounds.position.y + quitBounds.size.y) / 2
 						});
 
 				titleText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f});
+				startText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f});
+				quitText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f + 80});
 
 
 				//Background
@@ -28,108 +48,57 @@ void drawMenu(RenderWindow& window, GameState& currState)
 				//render
 				window.draw(background);
 				window.draw(titleText);
+				window.draw(startText);
+				window.draw(quitText);
 
 				break;
 			}
 		case IDLE_UNSOLVED_PAUSED:
-			{
-				//Paused Text
-				Font titleFont("assets/PressStart2P-Regular.ttf");
-				Text titleText(titleFont, "PAUSED", 150);
-
-				titleText.setFillColor(Color::White);
-
-				FloatRect bounds = titleText.getLocalBounds();
-				titleText.setOrigin({
-						(bounds.position.x + bounds.size.x) / 2,
-						(bounds.position.y + bounds.size.y) / 2
-						});
-
-				titleText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f});
-
-
-				//Background
-				RectangleShape background({WINDOW_WIDTH, WINDOW_HEIGHT});
-				background.setFillColor(Color::Blue);
-
-
-				//render
-				window.draw(background);
-				window.draw(titleText);
-
-				break;
-			}
 		case MOVING_UNSOLVED_PAUSED:
-			{
-				//Paused Text
-				Font titleFont("assets/PressStart2P-Regular.ttf");
-				Text titleText(titleFont, "PAUSED", 150);
-
-				titleText.setFillColor(Color::White);
-
-				FloatRect bounds = titleText.getLocalBounds();
-				titleText.setOrigin({
-						(bounds.position.x + bounds.size.x) / 2,
-						(bounds.position.y + bounds.size.y) / 2
-						});
-
-				titleText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f});
-
-
-				//Background
-				RectangleShape background({WINDOW_WIDTH, WINDOW_HEIGHT});
-				background.setFillColor(Color::Blue);
-
-
-				//render
-				window.draw(background);
-				window.draw(titleText);
-
-				break;
-			}
 		case IDLE_SOLVED_PAUSED:
-			{
-				//Paused Text
-				Font titleFont("assets/PressStart2P-Regular.ttf");
-				Text titleText(titleFont, "PAUSED", 150);
-
-				titleText.setFillColor(Color::White);
-
-				FloatRect bounds = titleText.getLocalBounds();
-				titleText.setOrigin({
-						(bounds.position.x + bounds.size.x) / 2,
-						(bounds.position.y + bounds.size.y) / 2
-						});
-
-				titleText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f});
-
-
-				//Background
-				RectangleShape background({WINDOW_WIDTH, WINDOW_HEIGHT});
-				background.setFillColor(Color::Blue);
-
-
-				//render
-				window.draw(background);
-				window.draw(titleText);
-
-				break;
-			}
 		case MOVING_SOLVED_PAUSED:
 			{
-				//Paused Text
+				//Intro Text
 				Font titleFont("assets/PressStart2P-Regular.ttf");
 				Text titleText(titleFont, "PAUSED", 150);
 
-				titleText.setFillColor(Color::White);
+				//other text
+				Font otherFont("assets/Roboto-Black.ttf");
+				Text resumeText(otherFont, "PRESS [ESC] TO RESUME", 50);
+				Text returnText(otherFont, "PRESS [Q] TO RETURN TO MAIN MENU", 50);
+				Text restartText(otherFont, "PRESS [R] TO RESTART", 50);
 
-				FloatRect bounds = titleText.getLocalBounds();
+				titleText.setFillColor(Color::White);
+				resumeText.setFillColor(Color::White);
+				returnText.setFillColor(Color::White);
+				restartText.setFillColor(Color::White);
+
+				FloatRect titleBounds = titleText.getLocalBounds();
+				FloatRect resumeBounds = resumeText.getLocalBounds();
+				FloatRect returnBounds = returnText.getLocalBounds();
+				FloatRect restartBounds = restartText.getLocalBounds();
+
 				titleText.setOrigin({
-						(bounds.position.x + bounds.size.x) / 2,
-						(bounds.position.y + bounds.size.y) / 2
+						(titleBounds.position.x + titleBounds.size.x) / 2,
+						(titleBounds.position.y + titleBounds.size.y) / 2
+						});
+				resumeText.setOrigin({
+						(resumeBounds.position.x + resumeBounds.size.x) / 2,
+						(resumeBounds.position.y + resumeBounds.size.y) / 2
+						});
+				returnText.setOrigin({
+						(returnBounds.position.x + returnBounds.size.x) / 2,
+						(returnBounds.position.y + returnBounds.size.y) / 2
+						});
+				restartText.setOrigin({
+						(restartBounds.position.x + restartBounds.size.x) / 2,
+						(restartBounds.position.y + restartBounds.size.y) / 2
 						});
 
 				titleText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f});
+				resumeText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f});
+				returnText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f + 80});
+				restartText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f + 80 + 80});
 
 
 				//Background
@@ -140,24 +109,56 @@ void drawMenu(RenderWindow& window, GameState& currState)
 				//render
 				window.draw(background);
 				window.draw(titleText);
+				window.draw(resumeText);
+				window.draw(returnText);
+				window.draw(restartText);
 
 				break;
 			}
 		case WIN:
 			{
-				//Paused Text
+
+				//Intro Text
 				Font titleFont("assets/PressStart2P-Regular.ttf");
 				Text titleText(titleFont, "YOU WIN", 150);
 
-				titleText.setFillColor(Color::White);
+				//other text
+				Font otherFont("assets/Roboto-Black.ttf");
+				Text resumeText(otherFont, "PRESS [ENTER] TO ENTER EXPLORE MODE", 50);
+				Text returnText(otherFont, "PRESS [Q] TO RETURN TO MAIN MENU", 50);
+				Text restartText(otherFont, "PRESS [R] TO RESTART", 50);
 
-				FloatRect bounds = titleText.getLocalBounds();
+				titleText.setFillColor(Color::White);
+				resumeText.setFillColor(Color::White);
+				returnText.setFillColor(Color::White);
+				restartText.setFillColor(Color::White);
+
+				FloatRect titleBounds = titleText.getLocalBounds();
+				FloatRect resumeBounds = resumeText.getLocalBounds();
+				FloatRect returnBounds = returnText.getLocalBounds();
+				FloatRect restartBounds = restartText.getLocalBounds();
+
 				titleText.setOrigin({
-						(bounds.position.x + bounds.size.x) / 2,
-						(bounds.position.y + bounds.size.y) / 2
+						(titleBounds.position.x + titleBounds.size.x) / 2,
+						(titleBounds.position.y + titleBounds.size.y) / 2
+						});
+				resumeText.setOrigin({
+						(resumeBounds.position.x + resumeBounds.size.x) / 2,
+						(resumeBounds.position.y + resumeBounds.size.y) / 2
+						});
+				returnText.setOrigin({
+						(returnBounds.position.x + returnBounds.size.x) / 2,
+						(returnBounds.position.y + returnBounds.size.y) / 2
+						});
+				restartText.setOrigin({
+						(restartBounds.position.x + restartBounds.size.x) / 2,
+						(restartBounds.position.y + restartBounds.size.y) / 2
 						});
 
 				titleText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f});
+				resumeText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f});
+				returnText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f + 80});
+				restartText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f + 80 + 80});
 
 
 				//Background
@@ -168,24 +169,39 @@ void drawMenu(RenderWindow& window, GameState& currState)
 				//render
 				window.draw(background);
 				window.draw(titleText);
+				window.draw(resumeText);
+				window.draw(returnText);
+				window.draw(restartText);
 
 				break;
 			}
-		case EXIT:
+		case EXIT_CONFIRM:
 			{
-				//Paused Text
+				//Intro Text
 				Font titleFont("assets/PressStart2P-Regular.ttf");
-				Text titleText(titleFont, "YOU SURE, BRUH?", 150);
+				Text titleText(titleFont, "FISHCUBE", 150);
+
+				//other text
+				Font otherFont("assets/Roboto-Black.ttf");
+				Text confirmText(otherFont, "ARE YOU SURE YOU WANT TO QUIT? [Y/N]", 50);
 
 				titleText.setFillColor(Color::White);
+				confirmText.setFillColor(Color::White);
 
-				FloatRect bounds = titleText.getLocalBounds();
+				FloatRect titleBounds = titleText.getLocalBounds();
+				FloatRect resumeBounds = confirmText.getLocalBounds();
+
 				titleText.setOrigin({
-						(bounds.position.x + bounds.size.x) / 2,
-						(bounds.position.y + bounds.size.y) / 2
+						(titleBounds.position.x + titleBounds.size.x) / 2,
+						(titleBounds.position.y + titleBounds.size.y) / 2
+						});
+				confirmText.setOrigin({
+						(resumeBounds.position.x + resumeBounds.size.x) / 2,
+						(resumeBounds.position.y + resumeBounds.size.y) / 2
 						});
 
 				titleText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f});
+				confirmText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f});
 
 
 				//Background
@@ -196,6 +212,7 @@ void drawMenu(RenderWindow& window, GameState& currState)
 				//render
 				window.draw(background);
 				window.draw(titleText);
+				window.draw(confirmText);
 
 				break;
 			}
