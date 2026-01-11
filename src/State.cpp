@@ -51,6 +51,10 @@ void StateManager::switchToState(GameState newState)
 			{
 				break;
 			}
+		case EXIT_CONFIRM:
+			{
+				break;
+			}
 		case EXIT:
 			{
 				break;

@@ -6,6 +6,12 @@ Game::Game()
 	player = new Player();
 	window.create(VideoMode({WINDOW_WIDTH, WINDOW_HEIGHT}), "FishCube", State::Fullscreen);
 	window.setFramerateLimit(60);
+
+	uiFont = Font("assets/fonts/Roboto-Black.ttf");
+	timerText = new Text(uiFont, "00:00:000", 40);
+	pauseText = new Text(uiFont, "Press [ESC] to Pause", 40);
+	timerText->setPosition({WINDOW_WIDTH - timerText->getLocalBounds().size.x, 0});
+	pauseText->setPosition({0, 0});
 }
 
 void Game::update(GameState& currState, GameState& nextState)
@@ -25,6 +31,7 @@ void Game::update(GameState& currState, GameState& nextState)
 
 				//start game
 				nextState = IDLE_UNSOLVED;
+				clock.restart();
 				break;
 			}
 		case IDLE_UNSOLVED:
@@ -35,6 +42,8 @@ void Game::update(GameState& currState, GameState& nextState)
 					nextState = WIN;
 					clock.stop();
 				}
+
+				updateTimerText();
 				break;
 			}
 		case IDLE_UNSOLVED_PAUSED:
@@ -52,6 +61,8 @@ void Game::update(GameState& currState, GameState& nextState)
 					cube->rotateDown(currState, nextState);
 				if(player->getDirection() == UP_2)
 					cube->rotateUp(currState, nextState);
+
+				updateTimerText();
 				break;
 			}
 		case MOVING_UNSOLVED_PAUSED:
@@ -62,6 +73,8 @@ void Game::update(GameState& currState, GameState& nextState)
 			{
 				//set player color
 				player->setColor(Color(0,0,0,100));
+
+				updateTimerText();
 				break;
 			}
 		case IDLE_SOLVED_PAUSED:
@@ -79,6 +92,8 @@ void Game::update(GameState& currState, GameState& nextState)
 					cube->rotateDown(currState, nextState);
 				if(player->getDirection() == UP_2)
 					cube->rotateUp(currState, nextState);
+
+				updateTimerText();
 				break;
 			}
 		case MOVING_SOLVED_PAUSED:
@@ -107,9 +122,32 @@ void Game::update(GameState& currState, GameState& nextState)
 void Game::draw(GameState& currState, GameState& nextState)
 {
 	window.clear();
+
+	switch(currState)
+	{
+		case START:
+		case GAME_START:
+				 break;
+		case IDLE_UNSOLVED:
+		case MOVING_UNSOLVED:
+				 window.draw(*pauseText);
+				 window.draw(*timerText);
+				 break;
+		case IDLE_SOLVED:
+		case MOVING_SOLVED:
+		case IDLE_UNSOLVED_PAUSED:
+		case MOVING_UNSOLVED_PAUSED:
+		case IDLE_SOLVED_PAUSED:
+		case MOVING_SOLVED_PAUSED:
+		case WIN:
+		case EXIT_CONFIRM:
+		case EXIT:
+				 break;
+	}
 	drawMenu(window, currState);
 	cube->draw(window, currState, nextState, player->getDirection());
 	player->draw(window, currState, nextState);
+
 	window.display();
 }
 
@@ -394,7 +432,6 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//explore
 							nextState = IDLE_SOLVED;
-							clock.start();
 						}
 						if(keyPressed->code == Keyboard::Key::Q)
 						{
@@ -495,4 +532,20 @@ bool Game::isValidMove(Direction dir)
 	if(targetPiece.getFillColor() == playerColor)
 		return false;
 	return true;
+}
+
+void Game::updateTimerText()
+{
+	int time = clock.getElapsedTime().asMilliseconds();
+	int minutes, seconds, mSeconds;
+	minutes = time/60000;
+	seconds = (time/1000) % 60;
+	mSeconds = time % 1000;
+
+	std::string timerStr =
+		std::to_string(minutes) + ":" +
+		std::to_string(seconds) + ":" +
+		std::to_string(mSeconds).substr(0,3);
+
+	timerText->setString(timerStr);
 }

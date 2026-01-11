@@ -10,8 +10,12 @@ class Game
 	Cube* cube;
 	Player* player;
 	Clock clock;
+	Font uiFont;
+	Text* timerText;
+	Text* pauseText;
 
 	void swapColors();
+	void updateTimerText();
 
 public:
 	Game();
