@@ -4,6 +4,7 @@
 #include "State.h"
 #include "Player.h"
 #include "Menu.h"
+#include "ScoreHandler.h"
 class Game
 {
 	RenderWindow window;
@@ -13,6 +14,9 @@ class Game
 	Font uiFont;
 	Text* timerText;
 	Text* pauseText;
+	ScoreHandler score;
+	unsigned int finalScore;
+
 
 	void swapColors();
 	void updateTimerText();

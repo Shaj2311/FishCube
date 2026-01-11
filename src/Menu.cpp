@@ -1,5 +1,5 @@
 #include "Menu.h"
-void drawMenu(RenderWindow& window, GameState& currState)
+void drawMenu(RenderWindow& window, GameState& currState, unsigned int* finalScore)
 {
 	switch(currState)
 	{
@@ -121,6 +121,11 @@ void drawMenu(RenderWindow& window, GameState& currState)
 				//Intro Text
 				Font titleFont("assets/fonts/PressStart2P-Regular.ttf");
 				Text titleText(titleFont, "YOU WIN", 150);
+				Text scoreText(
+						titleFont, 
+						std::string("Score: " + std::to_string(*finalScore)),
+						70
+					      );
 
 				//other text
 				Font otherFont("assets/fonts/Roboto-Black.ttf");
@@ -129,11 +134,13 @@ void drawMenu(RenderWindow& window, GameState& currState)
 				Text restartText(otherFont, "PRESS [R] TO RESTART", 50);
 
 				titleText.setFillColor(Color::White);
+				scoreText.setFillColor(Color::White);
 				resumeText.setFillColor(Color::White);
 				returnText.setFillColor(Color::White);
 				restartText.setFillColor(Color::White);
 
 				FloatRect titleBounds = titleText.getLocalBounds();
+				FloatRect scoreBounds = scoreText.getLocalBounds();
 				FloatRect resumeBounds = resumeText.getLocalBounds();
 				FloatRect returnBounds = returnText.getLocalBounds();
 				FloatRect restartBounds = restartText.getLocalBounds();
@@ -141,6 +148,10 @@ void drawMenu(RenderWindow& window, GameState& currState)
 				titleText.setOrigin({
 						(titleBounds.position.x + titleBounds.size.x) / 2,
 						(titleBounds.position.y + titleBounds.size.y) / 2
+						});
+				scoreText.setOrigin({
+						(scoreBounds.position.x + scoreBounds.size.x) / 2,
+						(scoreBounds.position.y + scoreBounds.size.y) / 2
 						});
 				resumeText.setOrigin({
 						(resumeBounds.position.x + resumeBounds.size.x) / 2,
@@ -156,6 +167,7 @@ void drawMenu(RenderWindow& window, GameState& currState)
 						});
 
 				titleText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f});
+				scoreText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f + 200});
 				resumeText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f});
 				returnText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f + 80});
 				restartText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f + 80 + 80});
@@ -169,6 +181,7 @@ void drawMenu(RenderWindow& window, GameState& currState)
 				//render
 				window.draw(background);
 				window.draw(titleText);
+				window.draw(scoreText);
 				window.draw(resumeText);
 				window.draw(returnText);
 				window.draw(restartText);

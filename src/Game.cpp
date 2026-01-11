@@ -12,6 +12,8 @@ Game::Game()
 	pauseText = new Text(uiFont, "Press [ESC] to Pause", 40);
 	timerText->setPosition({WINDOW_WIDTH - timerText->getLocalBounds().size.x, 0});
 	pauseText->setPosition({0, 0});
+
+	finalScore = 0;
 }
 
 void Game::update(GameState& currState, GameState& nextState)
@@ -41,6 +43,7 @@ void Game::update(GameState& currState, GameState& nextState)
 				{
 					nextState = WIN;
 					clock.stop();
+					finalScore = score.computeFinalScore(clock.getElapsedTime());
 				}
 
 				updateTimerText();
@@ -144,7 +147,7 @@ void Game::draw(GameState& currState, GameState& nextState)
 		case EXIT:
 				 break;
 	}
-	drawMenu(window, currState);
+	drawMenu(window, currState, &finalScore);
 	cube->draw(window, currState, nextState, player->getDirection());
 	player->draw(window, currState, nextState);
 
@@ -196,6 +199,8 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 								player->setDirection(UP_1);
 							else break;
 
+							score.addMove();
+
 							//set next state
 							nextState = MOVING_UNSOLVED;
 						}
@@ -207,6 +212,8 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 							else if(player->getRow() != 2 && isValidMove(DOWN_1))
 								player->setDirection(DOWN_1);
 							else break;
+
+							score.addMove();
 
 							//set next state
 							nextState = MOVING_UNSOLVED;
@@ -220,6 +227,8 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 								player->setDirection(LEFT_1);
 							else break;
 
+							score.addMove();
+
 							//set next state
 							nextState = MOVING_UNSOLVED;
 						}
@@ -232,12 +241,15 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 								player->setDirection(RIGHT_1);
 							else break;
 
+							score.addMove();
+
 							//set next state
 							nextState = MOVING_UNSOLVED;
 						}
 						if(keyPressed->code == Keyboard::Key::Space)
 						{
 							swapColors();
+							score.addSwap();
 						}
 						if(keyPressed->code == Keyboard::Key::Escape)
 						{
