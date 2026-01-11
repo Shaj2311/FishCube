@@ -12,7 +12,6 @@ add_executable(FishCube
 	src/main.cpp
 	src/Game.cpp
 	src/Side.cpp
-	src/State.cpp
 	src/Player.cpp
 	src/Cube.cpp
 	src/Menu.cpp

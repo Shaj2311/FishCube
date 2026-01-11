@@ -33,7 +33,7 @@ class StateManager
 	GameState gameState;
 public:
 	GameState getState(){return gameState;}
-	void switchToState(GameState newState);
+	void switchToState(GameState newState){gameState = newState;}
 };
 
 #endif
