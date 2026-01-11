@@ -44,6 +44,7 @@ void Game::update(GameState& currState, GameState& nextState)
 					nextState = WIN;
 					clock.stop();
 					finalScore = score.computeFinalScore(clock.getElapsedTime());
+					highScore = score.getHighScore();
 				}
 
 				updateTimerText();
@@ -147,7 +148,7 @@ void Game::draw(GameState& currState, GameState& nextState)
 		case EXIT:
 				 break;
 	}
-	drawMenu(window, currState, &finalScore);
+	drawMenu(window, currState, &finalScore, &highScore);
 	cube->draw(window, currState, nextState, player->getDirection());
 	player->draw(window, currState, nextState);
 

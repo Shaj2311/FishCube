@@ -1,6 +1,7 @@
 #ifndef SCORE_H
 #define SCORE_H
 #include <SFML/System.hpp>
+#include <fstream>
 #include "constants.h"
 using namespace sf;
 class ScoreHandler
@@ -14,5 +15,6 @@ public:
 	void addMove();
 	void addSwap();
 	int computeFinalScore(Time timeTaken);
+	int getHighScore();
 };
 #endif

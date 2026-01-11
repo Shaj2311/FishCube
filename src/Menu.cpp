@@ -1,5 +1,5 @@
 #include "Menu.h"
-void drawMenu(RenderWindow& window, GameState& currState, unsigned int* finalScore)
+void drawMenu(RenderWindow& window, GameState& currState, unsigned int* finalScore, unsigned int* highScore)
 {
 	switch(currState)
 	{
@@ -124,8 +124,18 @@ void drawMenu(RenderWindow& window, GameState& currState, unsigned int* finalSco
 				Text scoreText(
 						titleFont, 
 						std::string("Score: " + std::to_string(*finalScore)),
+						80
+					      );
+				Text highScoreText(
+						titleFont, 
+						std::string("High Score: " + std::to_string(*highScore)),
 						70
 					      );
+				Text newHighText(
+						titleFont,
+						"New High Score!",
+						40
+						);
 
 				//other text
 				Font otherFont("assets/fonts/Roboto-Black.ttf");
@@ -135,12 +145,16 @@ void drawMenu(RenderWindow& window, GameState& currState, unsigned int* finalSco
 
 				titleText.setFillColor(Color::White);
 				scoreText.setFillColor(Color::White);
+				highScoreText.setFillColor(Color::White);
+				newHighText.setFillColor(Color::White);
 				resumeText.setFillColor(Color::White);
 				returnText.setFillColor(Color::White);
 				restartText.setFillColor(Color::White);
 
 				FloatRect titleBounds = titleText.getLocalBounds();
 				FloatRect scoreBounds = scoreText.getLocalBounds();
+				FloatRect highScoreBounds = highScoreText.getLocalBounds();
+				FloatRect newHighBounds = newHighText.getLocalBounds();
 				FloatRect resumeBounds = resumeText.getLocalBounds();
 				FloatRect returnBounds = returnText.getLocalBounds();
 				FloatRect restartBounds = restartText.getLocalBounds();
@@ -152,6 +166,14 @@ void drawMenu(RenderWindow& window, GameState& currState, unsigned int* finalSco
 				scoreText.setOrigin({
 						(scoreBounds.position.x + scoreBounds.size.x) / 2,
 						(scoreBounds.position.y + scoreBounds.size.y) / 2
+						});
+				highScoreText.setOrigin({
+						(highScoreBounds.position.x + highScoreBounds.size.x) / 2,
+						(highScoreBounds.position.y + highScoreBounds.size.y) / 2
+						});
+				newHighText.setOrigin({
+						(newHighBounds.position.x + newHighBounds.size.x) / 2,
+						(newHighBounds.position.y + newHighBounds.size.y) / 2
 						});
 				resumeText.setOrigin({
 						(resumeBounds.position.x + resumeBounds.size.x) / 2,
@@ -166,11 +188,14 @@ void drawMenu(RenderWindow& window, GameState& currState, unsigned int* finalSco
 						(restartBounds.position.y + restartBounds.size.y) / 2
 						});
 
-				titleText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f});
-				scoreText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f + 200});
-				resumeText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f});
-				returnText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f + 80});
-				restartText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f + 80 + 80});
+				titleText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f - 200});
+				scoreText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f});
+				highScoreText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f + 200});
+				if(*highScore == *finalScore)
+					newHighText.setPosition({WINDOW_WIDTH/2.f, WINDOW_HEIGHT/3.f + 200 + 150});
+				resumeText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f + 100});
+				returnText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f + 100 + 80});
+				restartText.setPosition({WINDOW_WIDTH/2.f, 2*WINDOW_HEIGHT/3.f + 100 + 80 + 80});
 
 
 				//Background
@@ -182,7 +207,10 @@ void drawMenu(RenderWindow& window, GameState& currState, unsigned int* finalSco
 				window.draw(background);
 				window.draw(titleText);
 				window.draw(scoreText);
+				window.draw(highScoreText);
+				window.draw(newHighText);
 				window.draw(resumeText);
+
 				window.draw(returnText);
 				window.draw(restartText);
 

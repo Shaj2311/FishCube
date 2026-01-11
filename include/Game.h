@@ -16,6 +16,7 @@ class Game
 	Text* pauseText;
 	ScoreHandler score;
 	unsigned int finalScore;
+	unsigned int highScore;
 
 
 	void swapColors();
