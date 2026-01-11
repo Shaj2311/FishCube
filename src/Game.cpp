@@ -14,6 +14,22 @@ Game::Game()
 	pauseText->setPosition({0, 0});
 
 	finalScore = 0;
+
+	popBuf = SoundBuffer("assets/audio/pop.wav");
+	clickBuf = SoundBuffer("assets/audio/click.wav");
+	pop = new Sound(popBuf);
+	click = new Sound(clickBuf);
+}
+Game::~Game()
+{
+	delete cube;
+	delete player;
+
+	delete timerText;
+	delete pauseText;
+
+	delete pop;
+	delete click;
 }
 
 void Game::update(GameState& currState, GameState& nextState)
@@ -172,11 +188,13 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						//start game
 						if(keyPressed->code == Keyboard::Key::Enter)
 						{
+							pop->play();
 							nextState = GAME_START;
 						}
 						//exit
 						if(keyPressed->code == Keyboard::Key::Q)
 						{
+							pop->play();
 							nextState = EXIT_CONFIRM;
 						}
 					}
@@ -250,12 +268,14 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						if(keyPressed->code == Keyboard::Key::Space)
 						{
 							swapColors();
+							click->play();
 							score.addSwap();
 						}
 						if(keyPressed->code == Keyboard::Key::Escape)
 						{
 							//pause
 							nextState = IDLE_UNSOLVED_PAUSED;
+							pop->play();
 							clock.stop();
 						}
 					}
@@ -269,17 +289,20 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//resume
 							nextState = IDLE_UNSOLVED;
+							pop->play();
 							clock.start();
 						}
 						if(keyPressed->code == Keyboard::Key::Q)
 						{
 							//go to start menu
 							nextState = START;
+							pop->play();
 						}
 						if(keyPressed->code == Keyboard::Key::R)
 						{
 							//restart
 							nextState = GAME_START;
+							pop->play();
 						}
 					}
 					break;
@@ -292,6 +315,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//pause
 							nextState = MOVING_UNSOLVED_PAUSED;
+							pop->play();
 							clock.stop();
 						}
 					}
@@ -305,17 +329,20 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//resume
 							nextState = MOVING_UNSOLVED;
+							pop->play();
 							clock.start();
 						}
 						if(keyPressed->code == Keyboard::Key::Q)
 						{
 							//go to start menu
 							nextState = START;
+							pop->play();
 						}
 						if(keyPressed->code == Keyboard::Key::R)
 						{
 							//restart
 							nextState = GAME_START;
+							pop->play();
 						}
 					}
 					break;
@@ -373,6 +400,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//pause
 							nextState = IDLE_SOLVED_PAUSED;
+							pop->play();
 							clock.stop();
 						}
 					}
@@ -386,17 +414,20 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//resume
 							nextState = IDLE_SOLVED;
+							pop->play();
 							clock.start();
 						}
 						if(keyPressed->code == Keyboard::Key::Q)
 						{
 							//go to start menu
 							nextState = START;
+							pop->play();
 						}
 						if(keyPressed->code == Keyboard::Key::R)
 						{
 							//restart
 							nextState = GAME_START;
+							pop->play();
 						}
 					}
 					break;
@@ -409,6 +440,7 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//pause
 							nextState = MOVING_SOLVED_PAUSED;
+							pop->play();
 							clock.stop();
 						}
 					}
@@ -422,17 +454,20 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//resume
 							nextState = MOVING_SOLVED;
+							pop->play();
 							clock.start();
 						}
 						if(keyPressed->code == Keyboard::Key::Q)
 						{
 							//go to start menu
 							nextState = START;
+							pop->play();
 						}
 						if(keyPressed->code == Keyboard::Key::R)
 						{
 							//restart
 							nextState = GAME_START;
+							pop->play();
 						}
 					}
 					break;
@@ -445,16 +480,19 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						{
 							//explore
 							nextState = IDLE_SOLVED;
+							pop->play();
 						}
 						if(keyPressed->code == Keyboard::Key::Q)
 						{
 							//go to start menu
 							nextState = START;
+							pop->play();
 						}
 						if(keyPressed->code == Keyboard::Key::R)
 						{
 							//restart
 							nextState = GAME_START;
+							pop->play();
 						}
 					}
 					break;
@@ -467,11 +505,13 @@ void Game::pollEvents(GameState& currState, GameState& nextState)
 						if(keyPressed->code == Keyboard::Key::Y)
 						{
 							nextState = EXIT;
+							pop->play();
 						}
 						//back to start
 						if(keyPressed->code == Keyboard::Key::N)
 						{
 							nextState = START;
+							pop->play();
 						}
 					}
 					break;

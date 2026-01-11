@@ -1,5 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
+#include <SFML/Audio.hpp>
 #include "Cube.h"
 #include "State.h"
 #include "Player.h"
@@ -14,9 +15,16 @@ class Game
 	Font uiFont;
 	Text* timerText;
 	Text* pauseText;
+
 	ScoreHandler score;
 	unsigned int finalScore;
 	unsigned int highScore;
+	SoundBuffer popBuf;
+
+	SoundBuffer clickBuf;
+	Sound* pop;
+	Sound* click;
+
 
 
 	void swapColors();
@@ -24,7 +32,7 @@ class Game
 
 public:
 	Game();
-	~Game(){delete cube; delete player;}
+	~Game();
 	void pollEvents(GameState& currState, GameState& nextState);
 	void update(GameState& currState, GameState& nextState);
 	void draw(GameState& currState, GameState& nextState);
