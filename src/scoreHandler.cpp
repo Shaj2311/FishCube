@@ -36,6 +36,7 @@ int ScoreHandler::computeFinalScore(Time timeTaken)
 }
 int ScoreHandler::getHighScore()
 {
+	std::filesystem::create_directory("save");
 	std::fstream highScoreFile("save/highScore.dat", std::ios::in | std::ios::out);
 	//make file and write 0 if file doesn't exist
 	if(!highScoreFile.is_open())
