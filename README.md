@@ -27,7 +27,7 @@ with the path to your SFML cmake directory
 3. Build using CMake
 ```
 cd ./FishCube
-cmake -S . -B build -G "MinGW Makefiles"
+cmake -S . -B build
 cmake --build ./build
 ```
 
